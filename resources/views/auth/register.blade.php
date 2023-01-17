@@ -46,10 +46,10 @@
             <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required />
         </div>
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Giriş Yap</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Kayıt Yap</button>
         <!-- Register buttons -->
         <div class="text-center">
-            <p>Üye değil misiniz? <a href="{{route('register')}}">Kayıt ol</a></p>
+            <p>Üye misiniz? <a href="{{route('login')}}">Giriş Yap</a></p>
         </div>
     </form>
         </div>

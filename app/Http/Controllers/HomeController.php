@@ -22,7 +22,7 @@ class HomeController extends Controller
         $popularCategories = $categoryService->getPopularCategories();
         
         $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->simplePaginate(10);
-        $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->limit(10)->get();
+        $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->get();
         $tags = [];
         return view('home', ['articles'=>$articles , 'categories'=>$categories,'popularCategories'=>$popularCategories, 'popularPosts'=>$popularArticles,'tags'=> $tags]);
     }

@@ -1,20 +1,38 @@
 @if (isset($categories) && count($categories)>0)
-<ul class="navbar-nav mr-auto">
-    <li class="nav-item dropdown">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            Kategoriler
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           
-                 @foreach($categories as $category)
-                <a style="font-family: 'Smooch Sans', sans-serif;font-size:14px;" class="dropdown-item" href="/category/{{$category->id}}">
-                 {{$category->category}}<br>
-                </a>
-                @endforeach
-          
+<div class="w3-col l3">
+      <div class="w3-margin">
+        <div class="w3-container w3-padding">
+          KATEGORİLER
         </div>
-    </li>
-</ul>
+        <ul class="w3-ul w3-hoverable">
+          @foreach($popularCategories as $category)
+          <a href="{{ url('category', ['id' => $category->slug]) }}" class="sidebar-slug">
+            <li class="w3-padding-12 w3-hover-text-white">
+              <span>{{ $category->category }}</span>
+            </li>
+          </a>
+          @endforeach
+        </ul>
+      </div>
+      <hr>
+      <div class=" w3-margin">
+        <div class="w3-container w3-padding">
+          YAZILAR
+        </div>
+        <ul class="w3-ul w3-hoverable">
+          @foreach($popularPosts as $post)
+          <a href="{{ url('article', ['id' => $post->slug]) }}" class="sidebar-slug">
+            <li class="w3-padding-12 w3-hover-text-white">
+              <span>{{ $post->content_title }}</span>
+            </li>
+          </a>
+          @endforeach
+        </ul>
+      </div>
+      <hr>
+      <div class=" w3-margin">
+      </div>
+    </div>
 @endif
 
 
