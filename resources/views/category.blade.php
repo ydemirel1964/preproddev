@@ -6,7 +6,7 @@
 @endif
 <title>{{$category_name}} - Preprod Dev</title>
 <script type="text/javascript" src="{{ URL::asset('js/article.js') }}"></script>
-<link rel="stylesheet" href="{{ URL::asset('css/article.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/article.css') }}">
 @endsection
 @section('content')
 <div class="category">

@@ -15,6 +15,7 @@ class CommentController extends Controller
         if(Auth::check()){
             $articlecomment=$request->articlecomment;
             $articleid=$request->articleid;
+            $articleslug=$request->slug;
             $userid = Auth::user()->id;
             $commentcreate = comments::firstOrCreate(
                 [
@@ -23,7 +24,8 @@ class CommentController extends Controller
                     'user_id'=>$userid
                 ]
             );
-            return redirect("/article/$articleid");
+
+            return redirect("/article/$articleslug");
         }
     }
 }

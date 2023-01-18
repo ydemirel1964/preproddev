@@ -3,7 +3,7 @@
 <meta name="description" content="Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir." />
 <meta name="keywords" content="preprod dev,preprod,dev,web tasarım, yazılım, software, yazılım geliştirme">
 <title>İletişim - Preprod Dev</title>
-<link rel="stylesheet" href="{{ URL::asset('css/article.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/article.css') }}">
 @endsection
 @section('content')
 <div class="contact">

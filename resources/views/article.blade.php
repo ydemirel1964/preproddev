@@ -6,15 +6,17 @@
 <meta name="keywords" content='{{ $articles[0]->metatags}}'>
 @endif
 <script type="text/javascript" src="{{ URL::asset('js/article.js') }}"></script>
-<link rel="stylesheet" href="{{ URL::asset('css/article.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/article.css') }}">
 @endsection
 @section('content')
 <div class="article">
 <div class="w3-row">
 <div class="w3-col l3">
 <div class=" w3-margin">
+  <hr>
         <div class="w3-container w3-padding">
-           KATEGORİNİN YAZILARI
+           <b>Kategorinin Yazıları</b>
+           <hr>
         </div>
         <ul class="w3-ul w3-hoverable">
             @foreach($categoryArticles as $posts)
@@ -34,7 +36,7 @@
   @foreach ($articles as $key=>$article)
   <div class="w3-margin">
     <div class="w3-container"><br>
-      <h1><div class="article-title"><b>{{$article->content_title}}</b></div></h1>
+      <h1><div class="article-title">{{$article->content_title}}</div></h1>
       <h2><div class="article-description">{{$article->content_description}}, {{$article->created_at}}</div><h2>
       <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->users->id}}"> {{$article->users->name}} </a></div>
     </div>
@@ -50,7 +52,7 @@
    
     @foreach($comments as $comment)
     <div class="w3-container">
-    <div class="comment-writer">Yazar : {{$comment->users->name}} </div><br>
+    <div class="comment-writer">Yazar : <a class="article-writer-link"  href="/writerprofile/{{$article->users->id}}">{{$comment->users->name}} </a></div><br>
     <div class="comment-comment">{{$comment->comment}}</div>
     </div>
     <hr>
@@ -61,11 +63,13 @@
     <form action="{{url('/comment/create')}}" method="get">
     <textarea class="form-control"  name="articlecomment" rows="3" placeholder="Tartışmaya katıl ve bir yorum bırak!" required></textarea>
     <input type="hidden" class="form-control" name="articleid" value="{{$article->id}}"><br>
+    <input type="hidden" class="form-control" name="slug" value="{{$article->slug}}"><br>
     <div class="row">
     <div class="col-md-8">
     </div>
     <div class="col-md-4">
     <button class="form-control" type="submit" >Yorum Gönder</button>
+    <br><br>
     </div>
     </div>
   
@@ -74,6 +78,7 @@
     @endauth
   </div>
   @endforeach
+  <br><br>
  
 <!-- END BLOG ENTRIES -->
 </div>

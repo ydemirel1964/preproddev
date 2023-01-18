@@ -32,10 +32,7 @@
           <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->user_id}}">{{$article->users->name}} </a></div>
         </div>
         <div class="w3-container">
-          <div class="article-content">
-            <span class="class-span">
-              {!!$article->content!!}</span>
-          </div>
+        
           <div class="w3-row">
             <div class="w3-col m8 s12">
               <a class="article-content-link" href="{{url('article/'.$article->slug)}}"> Yazının tamamı için tıklayınız. » </a>

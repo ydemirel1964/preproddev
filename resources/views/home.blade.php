@@ -4,13 +4,13 @@
 <meta name="keywords" content="web tasarım, yazılım, software, yazılım geliştirme">
 <title>Anasayfa - Preprod Dev</title>
 <script type="text/javascript" src="{{ URL::asset('js/article.js') }}"></script>
-<link rel="stylesheet" href="{{ URL::asset('css/article.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/article.css') }}">
 @endsection
 @section('content')
 <div class="jumbotron p-3 p-md-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-        <h1 class="display-6 font-italic">Preprod Dev</h1>
-        <p>Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir.</p>
+        <h1 class="font-italic" style="font-size: 16px;">Preprod Dev</h1>
+        <p style="font-size: 14px;">Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir.</p>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
             <div class="article-title"><b> <a href="{{url('article/'.$article->slug)}}">
                         <h2 class="home-page-content-title-h2">{{$article->content_title}} </h2>
                     </a></b> - {{$article->created_at}}</div>
-            <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->users->id}}">{{$article->users->name}} </a></div>
+            <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->users->id}}" style="color: #002800;">{{$article->users->name}} </a></div>
         </div>
         <div class="w3-container">
             <div class="article-content">

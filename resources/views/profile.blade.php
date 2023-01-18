@@ -32,7 +32,6 @@
           <div class="article-description">{{$item->content_description}}, {{$item->created_at}} </div>
         </div>
         <div class="w3-container">
-          <div class="article-content"><span class="class-span">{!!$item->content!!}</span></div>
           <div class="w3-row">
             <div class="w3-col m8 s12">
               <a class="article-content-link" href="{{url('article/'.$item->slug)}}"> Yazının tamamı için tıklayınız. » </a>

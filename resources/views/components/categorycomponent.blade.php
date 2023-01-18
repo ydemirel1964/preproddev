@@ -1,8 +1,10 @@
 @if (isset($categories) && count($categories)>0)
 <div class="w3-col l3">
       <div class="w3-margin">
+        <hr>
         <div class="w3-container w3-padding">
-          KATEGORİLER
+         <b>Kategoriler</b>
+         <hr>
         </div>
         <ul class="w3-ul w3-hoverable">
           @foreach($popularCategories as $category)
@@ -17,7 +19,8 @@
       <hr>
       <div class=" w3-margin">
         <div class="w3-container w3-padding">
-          YAZILAR
+          <b>Yazılar</b>
+          <hr>
         </div>
         <ul class="w3-ul w3-hoverable">
           @foreach($popularPosts as $post)
@@ -30,6 +33,7 @@
         </ul>
       </div>
       <hr>
+      <br><br>
       <div class=" w3-margin">
       </div>
     </div>

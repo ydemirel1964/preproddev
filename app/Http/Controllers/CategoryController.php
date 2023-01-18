@@ -25,6 +25,7 @@ class CategoryController extends Controller
         $category = categories::select("category",'id','description')->where("slug","$slug")->get();
         if(count($category)>0){
         $category_id= $category[0]->id;
+    
         $article_categories = DB::table('categories')
         ->join('article_categories','article_categories.category_id','=','categories.id')
         ->join('articles','articles.id','=','article_categories.article_id')
@@ -34,6 +35,7 @@ class CategoryController extends Controller
         ->orWhere('categories.parent_id',$category_id)
         ->orderBy('articles.rank','ASC')
         ->get();
+
         $article_categories = json_decode(json_encode($article_categories), true);
 
         //KATEGORI SAYFASINDA KATEGORİLERİ DÜZENLEMEK İÇİN YAZILARI KATEGORI ISMINE GORE GRUPLADIK
@@ -44,7 +46,7 @@ class CategoryController extends Controller
         $categoryName = $category[0]->category;
         $categoryDescription = $category[0]->description;
         }
-        $popularArticles = articles::orderBy('articles.created_at', 'desc')->limit(10)->get();
+        $popularArticles = articles::orderBy('articles.created_at', 'desc')->get();
         
         return view('category', ['article_categories'=>$articleGroup , 'popularPosts'=>$popularArticles,'category_name'=>$categoryName,'category_description'=>$categoryDescription,'categories'=>$categories, 'popularCategories'=>$popularCategories]);
     }

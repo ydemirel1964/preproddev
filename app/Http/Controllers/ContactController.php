@@ -8,7 +8,7 @@ use App\Services\categoryService;
 
 use App\Models\categories;
 use App\Models\contacts;
-
+use Throwable;
 class ContactController extends Controller
 {
     public function index(){
