@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 <div class="jumbotron p-3 p-md-4 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
+    <div class="col-md-12 px-0">
         <h1 class="font-italic" style="font-size: 16px;">Preprod Dev</h1>
         <p style="font-size: 14px;">Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir.</p>
     </div>

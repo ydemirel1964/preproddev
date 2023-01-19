@@ -52,7 +52,7 @@
    
     @foreach($comments as $comment)
     <div class="w3-container">
-    <div class="comment-writer">Yazar : <a class="article-writer-link"  href="/writerprofile/{{$article->users->id}}">{{$comment->users->name}} </a></div><br>
+    <div class="comment-writer">Yazar : <a class="article-writer-link"  href="/writerprofile/{{$article->users->id}}">{{$comment->users->name}} </a></div>
     <div class="comment-comment">{{$comment->comment}}</div>
     </div>
     <hr>

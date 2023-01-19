@@ -14,6 +14,7 @@ use App\Http\Controllers\WriterProfileController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\SitemapXmlController;
 use Illuminate\Support\Facades\Artisan;
@@ -54,7 +55,7 @@ Route::get('/profile', [UserProfileController::class, 'index'])->name('userProfi
 
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 
-
+Route::post('/checkUnseenMessage', [MessageController::class, 'checkUnseenMessage']);
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 Route::get('/admin/articlecreate', [AdminArticleController::class,'createForm'])->middleware('auth');

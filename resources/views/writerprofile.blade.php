@@ -11,7 +11,15 @@
 <div class="w3-row">
 <div class="w3-col l12 s12">
   <div class="w3-center">
-<b><h1>{{$userarticles[0]->users->name}}</b>   yazarına ait yazılar </h1>
+  <b>
+  @if(isset($writer))
+        <h1>{{$writer['name']}}
+        </b> yazarına ait yazılar </h1>
+        @else
+        <b>
+          <h1>Böyle bir yazar bulunmamaktadır.
+        </b></h1>
+        @endif
 </div>
 <hr>
   <!-- Blog entry -->
