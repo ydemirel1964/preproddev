@@ -28,14 +28,14 @@
     <!-- Blog entry -->
     @foreach ($article_categories as $key=>$articles)
     <div class="w3-margin">
-      <h2><b>{{$key}} </b></h2>
+      <h2 class="article-title"><b>{{$key}} </b></h2>
       <br>
       @foreach($articles as $article)
       <div class="w3-container">
-        <div class="article-title"><b> <a href="{{url('article/'.$article['slug'])}}">
-              <h2>{{$article['content_title']}}</h2>
-            </a></b> </div>
-        <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article['user_id']}}">{{$article['name']}} </a>- {{$article['created_at']}}</div>
+        <div class="article-title"> <a href="{{url('article/'.$article['slug'])}}">
+              <h2 class="article-title">{{$article['content_title']}}</h2>
+            </a> </div>
+        <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article['user_id']}}">{{$article['name']}} </a>- <div class="article-date"> {{$article['created_at']}} </div></div>
       </div>
       <br>
       @endforeach

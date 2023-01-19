@@ -26,10 +26,10 @@
       @foreach ($userarticles as $item)
       <div class=" w3-margin">
         <div class="w3-container">
-          <div class="article-title"><b>
-              <h2>{{$item->content_title}}</h2>
+          <div class="article-title"><b><a href="{{url('article/'.$item->slug)}}">
+              <h2>{{$item->content_title}}</h2></a>
             </b></div>
-          <div class="article-description">{{$item->content_description}}, {{$item->created_at}} </div>
+          <div class="article-description">{{$item->content_description}}, <div class="article-date"> {{$item->created_at}} </div></div>
         </div>
         <div class="w3-container">
           <div class="w3-row">

@@ -91,7 +91,7 @@
   <div class="container">
     <div class="row">
       <div class="w3-center" style="margin: 15px 15px 15px 15px;">
-        Kendinize zaman ayırın ve kendinize yatırım yapın
+    
       </div>
     </div>
   </div>
@@ -107,22 +107,22 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link navbar-brand" href="/"><b style="color:black;">PREPROD-DEV</b></a>
+                <a class="nav-link navbar-brand" href="/"><b style="color:black;font-size:16px;">PREPROD-DEV</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/hakkimda">Hakkımızda</a>
+                <a class="nav-link" href="/hakkimda" style="font-size:14px;">Hakkımızda</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/iletisim">İletişim</a>
+                <a class="nav-link" href="/iletisim" style="font-size:14px;">İletişim</a>
               </li>
             </ul>
             <ul class="nav navbar-nav mx-auto">
               <ul>
                 <form action="{{ url('searchresult') }}" method="get">
-                  <input class="form-control" type="search" name="searchTerm" placeholder="Arama alanı" style="width: 300px;" aria-label="Search">
+                  <input class="form-control" id='searchArea' type="search" name="searchTerm" placeholder="Arama alanı" style="width: 300px;font-size:16px;" aria-label="Search">
               </ul>
               <ul>
-                <button class="btn btn-outline-success" type="submit">Ara</button>
+                <button class="btn btn-outline-success" type="submit" id='searchButton'>Ara</button>
               </ul>
               </form>
             </ul>
@@ -139,7 +139,7 @@
                         <form method="POST" id='logoutForm' action="{{ route('logout') }}">
                           @csrf
                           <div onclick="submit_form()">
-                            Çıkış Yap</div>
+                            Çıkış</div>
                         </form>
                       </a></li>
 
@@ -151,7 +151,7 @@
                   <form method="GET" action="{{ route('login') }}">
                     @csrf
                     <button type="submit" class="btn btn-outline-dark">
-                      Giriş Yap
+                      Giriş
                     </button>
                   </form>
                 </ul>

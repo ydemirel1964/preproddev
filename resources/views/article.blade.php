@@ -37,7 +37,7 @@
   <div class="w3-margin">
     <div class="w3-container"><br>
       <h1><div class="article-title">{{$article->content_title}}</div></h1>
-      <h2><div class="article-description">{{$article->content_description}}, {{$article->created_at}}</div><h2>
+      <h2><div class="article-description">{{$article->content_description}}, <div class="article-date">{{$article->created_at}}</div></div><h2>
       <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->users->id}}"> {{$article->users->name}} </a></div>
     </div>
     <br>

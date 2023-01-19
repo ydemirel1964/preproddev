@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-8">
             <div class="w3-center">
-                <h1>
+                <h1 id='contactText'>
                     İletişime Geçin<br>
                     Destek ,talep ve önerilerilerinizi aşağıdaki formdan iletebilirsiniz.
                 </h1>
@@ -22,20 +22,16 @@
                 <div class="mb-4">
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Adınız Soyadınız</label>
-                            <input class="form-control" name="contactName">
+                            <input class="form-control contactInput" name="contactName"  placeholder="Adınız Soyadınız" >
                         </div>
                         <div class="form-group">
-                            <label>Mail Adresiniz</label>
-                            <input class="form-control" name="contactEmail">
+                            <input class="form-control contactInput" name="contactEmail" placeholder="Mail Adresiniz">
                         </div>
                         <div class="form-group">
-                            <label>Konu başlığınız</label>
-                            <input class="form-control" name="contactTitle">
+                            <input class="form-control contactInput" name="contactTitle" placeholder="Konu Başlığınız">
                         </div>
                         <div class="form-group">
-                            <label>Mesajınız</label>
-                            <textarea class="form-control" name="contactBody"> </textarea>
+                            <textarea class="form-control contactInput" name="contactBody" placeholder="Mesajınız"></textarea>
                         </div>
                         <br>
                         <div class="row justify-content-center">

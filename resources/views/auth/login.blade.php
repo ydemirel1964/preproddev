@@ -33,7 +33,7 @@
             <input type="password" name='password' id="form2Example2" class="form-control" />
         </div>
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Giriş Yap</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Giriş</button>
         <!-- Register buttons -->
         <div class="text-center">
             <p>Üye değil misiniz? <a href="{{route('register')}}">Kayıt ol</a></p>

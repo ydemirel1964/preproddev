@@ -18,7 +18,11 @@
 }
 .article-title{
     color: black;
-    font-size:12px;
+    font-size:16px;
+}
+
+.article-title h2{
+    display: inline
 }
 .article-title a{
     color: black;
@@ -32,11 +36,19 @@
     overflow: hidden;
     text-align:center
 }
+
+.article-date{
+    display: inline;
+    font-size: 12px;
+} 
 .comment-writer{
-    word-wrap: break-word; overflow: hidden; text-align: right;
+    word-wrap: break-word; 
+    overflow: hidden; 
+    text-align: right;
 }
 .comment-comment{
-    word-wrap: break-word; overflow: hidden;
+    word-wrap: break-word; 
+    overflow: hidden;
 }
 .home-page-h1{
     font-size:20px;
@@ -44,11 +56,7 @@
     background-color: #678;
     padding: 25px;
 }
-.home-page-content-title-h2{
-    font-size:18px;
-    display:inline;
-    font-weight:300;
-} 
+
 .sidebar-slug{
     text-decoration:none;
     color:black;
@@ -73,10 +81,6 @@
 .category h1{
     font-size:20px;
 }
-.category h2{
-    font-size:20px;
-    font-weight: 300;
-}
 .article textarea{
     margin:20px;
     margin-bottom:0px;
@@ -86,12 +90,10 @@
     font-weight:300;
 }
 .aboutme h1{
-    font-size: 20px;
-    font-weight:300;
+    font-size: 18px;
 }
 .aboutme h2{
-    font-size: 16px;
-    font-weight:300;
+    font-size: 14px;
 }
 
 .writer-profile h1{
@@ -107,3 +109,20 @@
     font-size: 16px;
     font-weight:300;
 }
+#searchArea::placeholder{
+    font-size: 12px;
+    line-height: 4; 
+}
+
+#searchButton{
+    font-size: 16px;
+}
+
+#contactText{
+    font-size: 16px;
+}
+
+.contactInput{
+    margin-bottom: 20px;
+}
+
