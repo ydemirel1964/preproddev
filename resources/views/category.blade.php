@@ -35,7 +35,7 @@
         <div class="article-title"> <a href="{{url('article/'.$article['slug'])}}">
               <h2 class="article-title">{{$article['content_title']}}</h2>
             </a> </div>
-        <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article['user_id']}}">{{$article['name']}} </a>- <div class="article-date"> {{$article['created_at']}} </div></div>
+        <div class="article-writer"><a class="article-writer-link" href="/writerprofile/{{$article['user_id']}}">{{$article['name']}} </a>- <div class="article-date"> {{$article['created_at']}} </div></div>
       </div>
       <br>
       @endforeach

@@ -29,7 +29,7 @@
             <div class="article-title"><b>{{$article->content_title}}</b></div>
           </h2>
           <div class="article-description">{{$article->content_description}}, {{$article->created_at}}</div>
-          <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->user_id}}">{{$article->users->name}} </a></div>
+          <div class="article-writer"><a class="article-writer-link" href="/writerprofile/{{$article->user_id}}">{{$article->users->name}} </a></div>
         </div>
         <div class="w3-container">
         

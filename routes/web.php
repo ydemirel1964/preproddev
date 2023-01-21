@@ -46,6 +46,7 @@ Route::delete('/article/{id}', [ArticleController::class, 'delete']);
 Route::get('/article/{slug}', [ArticleController::class, 'index']);
 
 Route::get('/comment/create', [CommentController::class, 'create']);
+Route::get('/comment/delete', [CommentController::class, 'delete']);
 Route::get('/searchresult', [searchController::class, 'search']);
 
 Route::get('/category/{slug}', [CategoryController::class, 'index']);

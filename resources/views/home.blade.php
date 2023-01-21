@@ -23,7 +23,7 @@
             <div class="article-title"><b> <a href="{{url('article/'.$article->slug)}}">
                         <h2 class="article-title">{{$article->content_title}} </h2> </a></b> - <div class="article-date"> {{$article->created_at}}</div></div>
                  
-            <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->users->id}}" style="color: #002800;">{{$article->users->name}} </a></div>
+            <div class="article-writer"><a class="article-writer-link" href="/writerprofile/{{$article->users->id}}" style="color: #002800;">{{$article->users->name}} </a></div>
         </div>
         <div class="w3-container">
             <div class="article-content">

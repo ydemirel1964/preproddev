@@ -2,8 +2,8 @@
 <html prefix="og: https://ogp.me/ns#" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+-->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
   <!-- Adsense Etiketi  -->
@@ -56,7 +56,7 @@
     function checkUnseenMessage() {
       $.ajax({
         type: 'POST',
-        url: 'checkUnseenMessage',
+        url: '/checkUnseenMessage',
         data: '_token = <?php echo csrf_token() ?>',
         success: function(data) {
           unseenMessage = data;
@@ -128,7 +128,7 @@
             </ul>
             <ul class="nav navbar-nav">
               @if(Auth::user())
-              <a href="/chat" class="btn btn-outline-dark" id="chatStatus">Chat</a>
+              <!--<a href="/chat" class="btn btn-outline-dark" id="chatStatus">Chat</a> -->
               <ul>
                 <div class="dropdown">
                   <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-dark">Profil

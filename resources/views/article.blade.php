@@ -7,6 +7,31 @@
 @endif
 <script type="text/javascript" src="{{ URL::asset('js/article.js') }}"></script>
 <link rel="stylesheet" href="{{ URL::asset('css/article.css') }}">
+<script>
+  $(document).ready(function (){
+  $(".deleteComment").on('click', function(el) {
+    console.log($(this));
+    console.log($(event.target));
+    $.ajax({
+      type: 'GET',
+      url: '/comment/delete?commentId='+ $(this).val(),
+      data: 
+        '_token = <?php echo csrf_token() ?>',
+      success: function(data) {
+        unseenMessage = data;
+        if(data>0){
+        document.getElementById("chatStatus").innerHTML = "Chat - <a style='color:red;'>" + unseenMessage +"</a>";
+        }
+      },
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+     }
+    });
+  });
+});
+  
+    
+</script>
 @endsection
 @section('content')
 <div class="article">
@@ -38,7 +63,7 @@
     <div class="w3-container"><br>
       <h1><div class="article-title">{{$article->content_title}}</div></h1>
       <h2><div class="article-description">{{$article->content_description}}, <div class="article-date">{{$article->created_at}}</div></div><h2>
-      <div class="article-writer">Yazar : <a class="article-writer-link" href="/writerprofile/{{$article->users->id}}"> {{$article->users->name}} </a></div>
+      <div class="article-writer"><a class="article-writer-link" href="/writerprofile/{{$article->users->id}}">{{$article->users->name}}</a></div>
     </div>
     <br>
     <div class="w3-container">
@@ -49,15 +74,21 @@
     <div class="w3-container"><br>
     <div class="article-comment">  Yazıya ait yorumlar aşağıda listelenmiştir. </div>
     </div><hr>
-   
+
     @foreach($comments as $comment)
     <div class="w3-container">
-    <div class="comment-writer">Yazar : <a class="article-writer-link"  href="/writerprofile/{{$article->users->id}}">{{$comment->users->name}} </a></div>
+    <div class="comment-writer">
+      <a class="article-writer-link"  href="/writerprofile/{{$article->users->id}}">{{$comment->users->name}}  </a>
+          @if(isset(auth()->user()->id) && auth()->user()->id == $comment->user_id)
+          <div class="deleteComment" value="{{ $comment->id }}">-</div> 
+          @endif
+    </div>  
     <div class="comment-comment">{{$comment->comment}}</div>
     </div>
     <hr>
     @endforeach
     @endif
+
     @auth
     <div class="form-group">
     <form action="{{url('/comment/create')}}" method="get">
