@@ -30,7 +30,7 @@ class CategoryController extends Controller
         ->join('article_categories','article_categories.category_id','=','categories.id')
         ->join('articles','articles.id','=','article_categories.article_id')
         ->join('users','users.id','=','articles.user_id')
-        ->select('articles.user_id','articles.id','users.name','categories.category','articles.slug','articles.content_title','articles.created_at','categories.metatags')
+        ->select('articles.user_id','articles.id','users.name','categories.category','articles.slug','articles.content_title','articles.content_description','articles.created_at','categories.metatags')
         ->where('categories.id',$category_id)
         ->orWhere('categories.parent_id',$category_id)
         ->orderBy('articles.rank','ASC')
@@ -46,9 +46,9 @@ class CategoryController extends Controller
         $categoryName = $category[0]->category;
         $categoryDescription = $category[0]->description;
         }
-        $popularArticles = articles::orderBy('articles.created_at', 'desc')->get();
+        $allArticles = articles::with('users')->orderBy('articles.created_at', 'desc')->get();
         
-        return view('category', ['article_categories'=>$articleGroup , 'popularPosts'=>$popularArticles,'category_name'=>$categoryName,'category_description'=>$categoryDescription,'categories'=>$categories, 'popularCategories'=>$popularCategories]);
+        return view('category', ['article_categories'=>$articleGroup , 'allArticles'=>$allArticles,'category_name'=>$categoryName,'category_description'=>$categoryDescription,'categories'=>$categories, 'popularCategories'=>$popularCategories]);
     }
 
 }

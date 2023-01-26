@@ -21,8 +21,8 @@ public function getPopularCategories()
 {
     $result = DB::table('categories')
     ->join('article_categories', 'categories.id', '=', 'article_categories.category_id')
-    ->select('categories.category as category','categories.slug as slug','categories.updated_at as updated_at','id','article_categories.category_id as categoryid')
-    ->where('categories.parent_id',"0")
+    ->select('categories.category as category','categories.slug as slug','categories.updated_at as updated_at','id','article_categories.category_id as categoryid',DB::raw('COUNT(article_categories.category_id) as category_count'))
+    ->orderBy('category_count',"DESC")
     ->groupBy('categoryid')
     ->get();
     return $result;

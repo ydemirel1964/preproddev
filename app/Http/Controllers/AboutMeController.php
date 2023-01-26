@@ -19,6 +19,8 @@ class AboutMeController extends Controller
         $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->simplePaginate(10);
         $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->limit(5)->get();
         $tags = [];
-        return view('aboutme', ['articles'=>$articles , 'categories'=>$categories, 'popularPosts'=>$popularArticles,'tags'=> $tags]);
+        $categoryService = new categoryService();
+        $popularCategories = $categoryService->getPopularCategories();
+        return view('aboutme', ['articles'=>$articles , 'categories'=>$categories, 'popularCategories' => $popularCategories,'popularPosts'=>$popularArticles,'tags'=> $tags]);
     }
 }

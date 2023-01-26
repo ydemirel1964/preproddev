@@ -8,7 +8,7 @@
         location.reload();
     });
 });*/
-
+/*
 $(document).ready(function ()
 { $(".class-span").each(function(i){
      var len=$(this).text().trim().length;
@@ -17,6 +17,6 @@ $(document).ready(function ()
          $(this).text($(this).text().substr(0,100)+ '...');
      }
  });
-});
+});*/
 
 

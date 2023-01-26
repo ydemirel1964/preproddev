@@ -35,11 +35,13 @@ class ArticleController extends Controller
         if(count($articles)>0){
         $comments = comments::with('users')->where('article_id',$articles[0]['id'])->get();
         }
-        $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->limit(5)->get();
+        $allArticles = articles::with('users')->orderBy('articles.id', 'desc')->limit(20)->get();
         $categoryService = new categoryService();
         $categories = $categoryService->getCategories();
+        $popularCategories = $categoryService->getPopularCategories();
+
         
-        return view('article', ['articles'=>$articles,'categoryArticles'=>$categoryArticles,'categories'=>$categories,'comments'=>$comments,'article_keywords'=>$articlekeywords ]);
+        return view('article', ['popularCategories'=>$popularCategories,'allArticles'=>$allArticles,'articles'=>$articles,'categoryArticles'=>$categoryArticles,'categories'=>$categories,'comments'=>$comments,'article_keywords'=>$articlekeywords ]);
     }
 
     public function create(request $request){

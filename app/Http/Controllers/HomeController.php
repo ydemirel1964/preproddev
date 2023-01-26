@@ -18,12 +18,10 @@ class HomeController extends Controller
     {           
 
         $categoryService = new categoryService();
-        $categories = $categoryService->getCategories();
         $popularCategories = $categoryService->getPopularCategories();
-        
-        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->simplePaginate(10);
+        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->paginate(5);
         $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->get();
         $tags = [];
-        return view('home', ['articles'=>$articles , 'categories'=>$categories,'popularCategories'=>$popularCategories, 'popularPosts'=>$popularArticles,'tags'=> $tags]);
+        return view('home', ['articles'=>$articles , 'popularCategories'=>$popularCategories, 'allArticles'=>$popularArticles,'tags'=> $tags]);
     }
 }

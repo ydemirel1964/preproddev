@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Services\categoryService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -17,8 +18,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        
-        return view('auth.login');
+        $categoryService = new categoryService();
+        $popularCategories = $categoryService->getPopularCategories();
+        return view('auth.login',['popularCategories'=>$popularCategories]);
     }
 
     /**

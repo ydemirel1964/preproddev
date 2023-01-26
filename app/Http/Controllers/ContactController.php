@@ -14,7 +14,8 @@ class ContactController extends Controller
     public function index(){
         $categoryService = new categoryService();
         $categories = $categoryService->getCategories();
-        return view('contact', ['categories'=>$categories]);
+        $popularCategories = $categoryService->getPopularCategories();
+        return view('contact', ['categories'=>$categories,'popularCategories'=>$popularCategories]);
     }
 
     public function create(request $request){

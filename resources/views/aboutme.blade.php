@@ -6,17 +6,24 @@
 <link rel="stylesheet" href="{{ URL::asset('css/article.css') }}">
 @endsection
 @section('content')
-<div class="w3-row">
-    <div class="w3-col l12 s12">
-        <div class="aboutme">
-            <div class="row w3-center">
-                <h1><b>Preprod Dev</b></h1>
-                <p>
-                <h2>Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar
-                    içermektedir.</h2>
-                </p>
-            </div>
+<main class="site-main">
+<section class="blog-post-area section-margin mt-4">
+      <div class="container">
+        <br><br>
+        <div class="row">
+        <div class="col-lg-2"> </div>
+          <div class="col-lg-8">
+          <h2><b>Preprod Dev</b></h2>
+          <br>
+    <h5>Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar
+    içermektedir.</h5>
+
+          </div>
+          <div class="col-lg-2"> </div>
         </div>
-    </div>
-</div>
+      </div>
+</section>
+
+
+</main>
 @endsection

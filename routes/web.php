@@ -36,7 +36,7 @@ Route::group(['middleware' => ['urlControl']], function() {
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/hakkimda', [AboutMeController::class, 'index']);
+Route::get('/hakkimizda', [AboutMeController::class, 'index']);
 Route::get('/aboutme', [AboutMeController::class, 'index']);
 
 Route::get('/iletisim', [ContactController::class, 'index']);
@@ -80,12 +80,15 @@ Route::get('/admin/category/delete/{id}', [AdminCategoryController::class, 'dele
 
 //Clear all cache
 Route::get('/cache-clear', function() {
-    $exitCode = Artisan::call('cache:clear');
-    $exitCode = Artisan::call('optimize');
-    $exitCode = Artisan::call('config:cache');
-    $exitCode = Artisan::call('route:clear');
-    $exitCode = Artisan::call('view:clear');
-    $exitCode = Artisan::call('optimize:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('optimize:clear');
+    Artisan::call('optimize');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('route:clear');
+    Artisan::call('route:cache');
+    Artisan::call('view:clear');
+    Artisan::call('view:cache');
     return '<h1>Tüm cacheler silindi.</h1>';
 });
 
