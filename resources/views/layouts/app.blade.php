@@ -1,26 +1,19 @@
 <!doctype html>
-<html prefix="og: https://ogp.me/ns#" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html prefix="og: https://ogp.me/ns#" lang="tr">
 <head>
-  <link rel="stylesheet" href="{{ URL::asset('vendors/bootstrap/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('vendors/fontawesome/css/all.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('vendors/themify-icons/themify-icons.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('vendors/linericon/style.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('vendors/owl-carousel/owl.theme.default.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('vendors/owl-carousel/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('vendors/main.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
   
   <meta name="yandex-verification" content="0caaeca8d31605b5" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel="icon" type="image/png" href="{{ asset('img/preproddev.webp') }}">
   <link rel="shortcut icon" type="image/png" href="{{ asset('img/preproddev.webp') }}">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <!--  Adsense Etiketi -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9579347278267224" crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9579347278267224"
+     crossorigin="anonymous"></script><!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HPCJ8LJ9C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -28,10 +21,19 @@
     function gtag() {
       dataLayer.push(arguments);
     }
-    gtag('js', new Date());
+   gtag('js', new Date());
     gtag('config', 'G-6HPCJ8LJ9C');
   </script>
-  <meta name="generator" content="All in One SEO (AIOSEO) 4.2.4 ">
+<!--<script type="application/ld+json">
+{
+ "@context": "http://schema.org",
+ "@type": "Organization",
+ "description": "Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir.",
+ "name": "PreprodDev",
+}
+</script>
+-->
+<meta name="generator" content="All in One SEO (AIOSEO) 4.2.4 " />
   @yield('head')
 </head>
 
@@ -148,12 +150,7 @@
     </div>
   </footer>
   <!--================ End Footer Area =================-->
-
-  <script src="{{ URL::asset('vendors/jquery/jquery-3.2.1.min.js') }}"></script>
-  <script src="{{ URL::asset('vendors/bootstrap/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ URL::asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script>
-  <script src="{{ URL::asset('js/jquery.ajaxchimp.min.js') }}"></script>
-  <script src="{{ URL::asset('js/mail-script.js') }}"></script>
+  <script src="{{ URL::asset('vendors/main.js') }}"></script>
   <script src="{{ URL::asset('js/main.js') }}"></script>
   </div>
 </body>

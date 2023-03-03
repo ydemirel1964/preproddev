@@ -20,7 +20,7 @@
         </url>
 <?php } ?>
 <url>
-    <loc>https://www.preproddev.com/hakkimda</loc>
+    <loc>https://www.preproddev.com/hakkimizda</loc>
     <lastmod>2022-09-19T08:47:19+00:00</lastmod>
 </url>
 <url>

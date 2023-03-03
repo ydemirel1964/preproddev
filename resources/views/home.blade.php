@@ -12,7 +12,7 @@
       <div class="container">
         <div class="hero-banner">
           <div class="hero-banner__content">
-            <h4>Preprod Dev</h4>
+            <h1>Preprod Dev</h1>
             <h6>Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir.</h6>
           </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="single-recent-blog-post">
               <div class="details mt-20">
                 <a href="{{ url('article/'.$article->slug) }}">
-                  <h3>{{$article->content_title}}</h3>
+                  <h2>{{$article->content_title}}</h2>
                 </a>
                 <p>{!!$article->content_description!!}</p>
                 <p class="content"> {!! $article->content !!} </p>

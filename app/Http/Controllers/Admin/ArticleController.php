@@ -44,6 +44,7 @@ class ArticleController extends Controller
                     file_put_contents($path, $imgeData);
                     $image->removeAttribute('src');
                     $image->setAttribute('src', $image_name);
+                    $image->setAttribute('alt', $contenttitle);
                  }
                 $content = $dom->saveHTML();
                 $contentdescription=$request->articlecontentdescription;
@@ -106,16 +107,23 @@ class ArticleController extends Controller
                 @$dom = new \DomDocument();
                 @$dom->loadHtml(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
                 $imageFile = $dom->getElementsByTagName('img');
+             
                 foreach($imageFile as $item => $image){
                     $data = $image->getAttribute('src');
-                    list($type, $data) = explode(';', $data);
-                    list(, $data)      = explode(',', $data);
-                    $imgeData = base64_decode($data);
-                    $image_name= "/upload/" . time().$item.'.png';
-                    $path = public_path() . $image_name;
-                    file_put_contents($path, $imgeData);
-                    $image->removeAttribute('src');
-                    $image->setAttribute('src', $image_name);
+                    if (base64_encode(base64_decode($data, true)) === $data){
+                        list($type, $data) = explode(';', $data);
+                        list(, $data)      = explode(',', $data);
+                        $imgeData = base64_decode($data);
+                        $image_name= "/upload/" . time().$item.'.png';
+                        $path = public_path() . $image_name;
+                        file_put_contents($path, $imgeData);
+                        $image->removeAttribute('src');
+                        $image->setAttribute('src', $image_name);
+                        $image->setAttribute('alt', $articlecontenttitle);
+                        info("deneme");
+                    } else {
+                        info('$data is NOT valid');
+                    }
                  }
             $articlecontent = $dom->saveHTML();
             $contentcategory=$request->categories;

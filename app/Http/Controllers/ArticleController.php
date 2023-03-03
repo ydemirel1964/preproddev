@@ -104,6 +104,7 @@ class ArticleController extends Controller
                     file_put_contents($path, $imgeData);
                     $image->removeAttribute('src');
                     $image->setAttribute('src', $image_name);
+                    $image->setAttribute('alt', $articlecontenttitle);
                  }
             $articlecontent = $dom->saveHTML();
             $contentcategory=$request->categories;
