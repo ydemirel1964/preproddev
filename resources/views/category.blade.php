@@ -34,7 +34,7 @@
         <div class="col-lg-4 sidebar-widgets">
           <div class="widget-wrap">
             <div class="single-sidebar-widget post-category-widget">
-              <h4 class="single-sidebar-widget__title">Kategoriler</h4>
+              <h4 class="single-sidebar-widget__title"><div class="text-center"> Kategoriler </div></h4>
               <ul class="cat-list mt-20">
                 @foreach($popularCategories as $category)
                 <li>
@@ -48,7 +48,7 @@
             </div>
 
             <div class="single-sidebar-widget popular-post-widget">
-              <h4 class="single-sidebar-widget__title">Yazılar</h4>
+              <h4 class="single-sidebar-widget__title"><div class="text-center">Yazılar</div></h4>
               <div class="popular-post-list">
                 @foreach($allArticles as $post)
                 <br>
