@@ -13,6 +13,7 @@ use App\Models\categories;
 class AboutMeController extends Controller
 {
     public function index(){
+        info("deneme");
         $categoryService = new categoryService();
         $categories = $categoryService->getCategories();
         $populerCategories = $categoryService->getCategories();
