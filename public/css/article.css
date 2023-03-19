@@ -118,10 +118,24 @@
     font-size: 16px;
 }
 
-#contactText{
+#contact-text{
     font-size: 16px;
+    text-align: center;
 }
 
 .contactInput{
     margin-bottom: 20px;
+}
+.side-article-title {
+    font-size: 14px;
+    font-weight:300;
+    transition:all 0.3s ease 0s;
+    margin-bottom:0px;
+}
+
+.side-category-title {
+    font-size: 14px;
+    font-weight:300;
+    transition:all 0.3s ease 0s;
+    margin-bottom:0px;
 }

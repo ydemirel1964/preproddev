@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-8">
             <div class="w3-center">
-                <h1 id='contactText'>
+                <h1 id='contact-text' >
                     İletişime Geçin<br>
                     Destek ,talep ve önerilerilerinizi aşağıdaki formdan iletebilirsiniz.
                 </h1>
