@@ -12,27 +12,16 @@
   <link rel="icon" type="image/png" href="{{ asset('img/preproddev.webp') }}">
   <link rel="shortcut icon" type="image/png" href="{{ asset('img/preproddev.webp') }}">
   <!--  Adsense Etiketi -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9579347278267224"
-     crossorigin="anonymous"></script><!-- Google tag (gtag.js) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9579347278267224" crossorigin="anonymous"></script><!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HPCJ8LJ9C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
       dataLayer.push(arguments);
     }
    gtag('js', new Date());
     gtag('config', 'G-6HPCJ8LJ9C');
   </script>
-<!--<script type="application/ld+json">
-{
- "@context": "http://schema.org",
- "@type": "Organization",
- "description": "Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir.",
- "name": "PreprodDev",
-}
-</script>
--->
 <meta name="generator" content="All in One SEO (AIOSEO) 4.2.4 " />
   @yield('head')
 </head>
@@ -80,7 +69,7 @@
   </div>
   </div>
   <div class="container">
-    <main class="py-4">
+    <main >
       @yield('content')
     </main>
   </div>

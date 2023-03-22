@@ -35,12 +35,12 @@
             <div class="col-lg-4 sidebar-widgets">
           <div class="widget-wrap">
             <div class="single-sidebar-widget post-category-widget">
-              <h3 class="single-sidebar-widget__title"><div class="text-center"> Kategoriler </div></h3>
+              <div class="text-center single-sidebar-widget__title"> Kategoriler </div>
               <ul class="cat-list mt-20">
                 @foreach($popularCategories as $category)
                 <li>
                   <a href="{{ url('category', ['id' => $category->slug]) }}" class="d-flex justify-content-between">
-                    <h4 class="side-category-title"> <p>{{ $category->category }}</p></h4>
+                    <p class="text-center single-sidebar-widget__title"> {{ $category->category }} </p>
                     <p>{{ $category->category_count}}</p>
                   </a>
                 </li>
@@ -48,7 +48,7 @@
               </ul>
             </div>
             <div class="single-sidebar-widget popular-post-widget">
-              <h3 class="single-sidebar-widget__title"><div class="text-center">Yazılar</div></h3>
+              <div class="text-center single-sidebar-widget__title">Yazılar</div>
               <div class="popular-post-list">
                 @foreach($allArticles as $post)
                 <br>

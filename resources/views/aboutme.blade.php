@@ -13,10 +13,10 @@
         <div class="row">
         <div class="col-lg-2"> </div>
           <div class="col-lg-8">
-          <h2><b>Preprod Dev</b></h2>
+          <h1><b>Preprod Dev</b></h1>
           <br>
-    <h5>Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar
-    içermektedir.</h5>
+    <p>Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar
+    içermektedir.</p>
 
           </div>
           <div class="col-lg-2"> </div>
