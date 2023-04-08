@@ -543,9 +543,7 @@ a{
     .sample-text-area{
         padding:70px 0 70px 0
     }
-    .generic-blockquote{
-        padding:30px 15px 30px 30px
-    }
+
     .blog_details h2{
         font-size:20px;
         line-height:30px
@@ -1810,19 +1808,8 @@ a{
     color:#797979;
     margin-bottom:15px
 }
-.main_blog_details .blockquote{
-    background:#f2f3f7;
-    padding:30px;
-    box-shadow:-20.84px 21.58px 30px 0px rgba(176,176,176,0.1);
-    margin:35px 0px
-}
-.main_blog_details .blockquote p{
-    background:#ffffff;
-    margin-bottom:0px;
-    border-left:2px solid #415094;
-    padding:30px;
-    font-style:italic
-}
+
+
 .main_blog_details .form-group{
     margin-bottom:20px
 }

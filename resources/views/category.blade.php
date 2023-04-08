@@ -57,8 +57,8 @@
                 <div class="single-post-list">
                   <div class="thumb">
                     <ul class="thumb-info">
-                      <li><a href="#">{{ $post->users->name }}</a></li>
-                      <li><a href="#">{{ $post->created_at->format('Y-m-d') }}</a></li>
+                      <li><!-- <a href="#"> --> {{ $post->users->name }} <!-- </a> --></li>
+                      <li><!-- <a href="#"> --> {{ $post->created_at->format('Y-m-d') }} <!-- </a> --></li>
                     </ul>
                   </div>
                   <div class="details mt-20">
