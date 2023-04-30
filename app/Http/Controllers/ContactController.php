@@ -40,7 +40,9 @@ class ContactController extends Controller
                         $result = "fail";
                     }
                     $categories = categories::get();
-                    return view('/contact', ['categories'=>$categories,'result'=>"$result"]);
+                    $categoryService = new categoryService();
+                    $popularCategories = $categoryService->getPopularCategories();
+                    return view('/contact', ['categories'=>$categories,'popularCategories'=>$popularCategories,'result'=>"$result"]);
                 }catch (Throwable $e) {
                     return $e;
                 }

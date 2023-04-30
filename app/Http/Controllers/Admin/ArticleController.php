@@ -19,6 +19,15 @@ class ArticleController extends Controller
         $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->simplePaginate(10);
         return view('admin/article', ['articles' => $articles]);
     }
+
+    public function articleSearch(request $request)
+    {
+        info($request->article_search);
+        $articles = articles::with('users')->with('comments')->where('content_title','LIKE','%'.$request->article_search.'%')->orderBy('id', 'desc')->simplePaginate(10);
+        log::info($articles);
+        return view('admin/article', ['articles' => $articles]);
+    }
+
     public function createForm()
     {
         $categories = categories::get();

@@ -11,7 +11,8 @@
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-quarter">
+
+    <div class="w3-col s2">
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-right">
           <h3>{{$commentCount}}</h3>
@@ -19,7 +20,7 @@
         <h4>Yorumlar</h4>
       </div>
     </div>
-    <div class="w3-quarter">
+    <div class="w3-col s2">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-right">
           <h3>{{$articleCount}}</h3>
@@ -27,7 +28,7 @@
         <h4>Yazılar</h4>
       </div>
     </div>
-    <div class="w3-quarter">
+    <div class="w3-col s3">
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-right">
           <h3>{{$userCount}}</h3>
@@ -35,12 +36,21 @@
         <h4>Kullanıcılar</h4>
       </div>
     </div>
-    <div class="w3-quarter">
+    <div class="w3-col s3">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-right">
           <h3>{{$categoryCount}}</h3>
         </div>
         <h4>Kategoriler</h4>
+      </div>
+    </div>
+
+    <div class="w3-col s2">
+      <div class="w3-container w3-orange w3-text-white w3-padding-16">
+        <div class="w3-right">
+          <h3>{{$contactCount}}</h3>
+        </div>
+        <h4>İletişim</h4>
       </div>
     </div>
   </div>

@@ -7,8 +7,28 @@
 @endsection
 @section('content')
 <div class="w3-row" style="margin:10px;">
-<a style="color: black;text-decoration:none;" href="{{url('admin/articlecreate')}}"> <p><button style="margin:20px;" class="w3-button w3-padding-large w3-white w3-border w3-right"><b>YENİ YAZI EKLEME »</b></button></p> </a>
-<table class="w3-table-all" >
+
+  <a style="color: black;text-decoration:none;" href="{{url('admin/articlecreate')}}">
+    <p>
+      <button style="margin:20px;" class="w3-button w3-padding-large w3-white w3-border w3-right">
+        <b>YENİ YAZI EKLEME »</b>
+      </button>
+    </p>
+  </a>
+  <form action="{{url('/admin/article-search')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="row">
+      <div class="col-9">
+        <input class="form-control" style="float:left" name="article_search"><br><br>
+        <button type="submit" style="float:right;width:150px;" class="btn btn-primary">ARA</button>
+      </div>
+      <div class="col-6">
+      </div>
+    </div>
+  </form>
+  <br>
+
+  <table class="w3-table-all">
     <thead>
       <tr class="w3">
         <th>Başlık</th>
@@ -18,27 +38,27 @@
       </tr>
     </thead>
 
-  <!-- Blog entry -->
-  @foreach ($articles as $key=>$article)
-  <tr>
+    <!-- Blog entry -->
+    @foreach ($articles as $key=>$article)
+    <tr>
       <td>{{$article->content_title}}</td>
       <td style='word-wrap: break-word;max-width:500px;'>{{$article->content_description}}</td>
       <td>{{$article->users->name}}</td>
       <td>
         <a href="{{ url('admin/article/updateform', ['id' => $article->id]) }}" style="text-decoration:none;">
-        <button class="form-control">GUNCELLE</button></a>
+          <button class="form-control">GUNCELLE</button></a>
         <a href="{{ url('admin/article/delete/'.$article->id) }}" style="text-decoration:none;margin:">
-        <button class="form-control" style="margin-top:5px;">SİL</button>
-        </form>
+          <button class="form-control" style="margin-top:5px;">SİL</button>
+          </form>
       </td>
     </tr>
-  @endforeach
+    @endforeach
   </table>
-<!-- END BLOG ENTRIES -->
+  <!-- END BLOG ENTRIES -->
 
-</div>  
+</div>
 <div class="w3-center">
-{{ $articles->links() }}<br><br>
+  {{ $articles->links() }}<br><br>
 </div>
 <!-- END w3-content -->
 </div>

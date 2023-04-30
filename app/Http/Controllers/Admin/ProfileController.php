@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\articles;
 use App\Models\categories;
 use App\Models\comments;
+use App\Models\contacts;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 
@@ -22,6 +23,7 @@ class ProfileController extends Controller
             $articleCount = articles::count();
             $commentCount = comments::count();
             $userCount = User::count();
+            $contactCount = contacts::count();
 
             $articles = articles::with('users')->orderBy('id', 'DESC')->limit(5)->get();
             $comments = comments::with('users')->orderBy('id','DESC')->limit(5)->get();
@@ -35,7 +37,8 @@ class ProfileController extends Controller
             'categoryCount'=>$categoryCount,
             'articleCount'=>$articleCount,
             'commentCount'=>$commentCount,
-            'userCount'=>$userCount
+            'userCount'=>$userCount,
+            'contactCount'=>$contactCount
             ]);
     }
 }
