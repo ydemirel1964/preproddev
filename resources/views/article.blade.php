@@ -60,7 +60,7 @@
                     </ul>
                   </div>
                   <div class="details mt-20">
-                    <a href="{{ url('article', ['id' => $post->slug]) }}">
+                    <a href="{{ url('', ['id' => $post->slug]) }}">
                       <h4 class="side-article-title">{{ $post->content_title }}</h4>
                     </a>
                   </div>

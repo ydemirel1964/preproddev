@@ -26,7 +26,7 @@
       @foreach ($userarticles as $item)
       <div class=" w3-margin">
         <div class="w3-container">
-          <div class="article-title"><b><a href="{{url('article/'.$item->slug)}}">
+          <div class="article-title"><b><a href="{{url('/'.$item->slug)}}">
               <h2>{{$item->content_title}}</h2></a>
             </b></div>
           <div class="article-description">{{$item->content_description}}, <div class="article-date"> {{$item->created_at}} </div></div>
@@ -34,7 +34,7 @@
         <div class="w3-container">
           <div class="w3-row">
             <div class="w3-col m8 s12">
-              <a class="article-content-link" href="{{url('article/'.$item->slug)}}"> Yazının tamamı için tıklayınız. » </a>
+              <a class="article-content-link" href="{{url('/'.$item->slug)}}"> Yazının tamamı için tıklayınız. » </a>
             </div>
             <div class="w3-col m4 w3-hide-small w3-right">
               <p><span class=" w3-right">Yorumlar {{ count($item->comments) }}</span></p>

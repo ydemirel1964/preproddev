@@ -35,7 +35,7 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => ['urlControl']], function() {
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
-
+Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/hakkimizda', [AboutMeController::class, 'index']);
 Route::get('/aboutme', [AboutMeController::class, 'index']);
 
@@ -43,7 +43,7 @@ Route::get('/iletisim', [ContactController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/create',[ContactController::class, 'create']);
 Route::delete('/article/{id}', [ArticleController::class, 'delete']);
-Route::get('/article/{slug}', [ArticleController::class, 'index']);
+Route::get('/{slug}', [ArticleController::class, 'index']);
 
 Route::get('/comment/create', [CommentController::class, 'create']);
 Route::get('/comment/delete', [CommentController::class, 'delete']);
@@ -54,7 +54,7 @@ Route::get('/writerprofile/{id}', [WriterProfileController::class, 'index']);
 
 Route::get('/profile', [UserProfileController::class, 'index'])->name('userProfile');
 
-Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
+
 
 Route::post('/checkUnseenMessage', [MessageController::class, 'checkUnseenMessage']);
 
@@ -81,7 +81,7 @@ Route::post('/admin/article-search', [AdminArticleController::class, 'articleSea
 
 
 //Clear all cache
-Route::get('/cache-clear', function() {
+Route::get('/config/cache-clear', function() {
     Artisan::call('cache:clear');
     Artisan::call('optimize:clear');
     Artisan::call('optimize');

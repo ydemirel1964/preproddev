@@ -15,7 +15,7 @@
 <?php } ?>
 <?php foreach ($articles as $article){    ?>
         <url>
-            <loc>{{ url('/') }}/article/<?php echo $article['slug']; ?></loc>
+            <loc>{{ url('/') }}/<?php echo $article['slug']; ?></loc>
             <lastmod>{{ date('Y-m-d H:i:s') }}</lastmod>
         </url>
 <?php } ?>

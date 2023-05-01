@@ -20,7 +20,7 @@
           <hr>
           <br>
             @foreach($articles as $article)
-          <a href="{{url('article/'.$article['slug']) }}">
+          <a href="{{url('/'.$article['slug']) }}">
             <h2 class="category-article-title">{{ $article['content_title'] }}</h2>
           </a>
           <div>
@@ -62,7 +62,7 @@
                     </ul>
                   </div>
                   <div class="details mt-20">
-                    <a href="{{ url('article', ['id' => $post->slug]) }}">
+                    <a href="{{ url('', ['id' => $post->slug]) }}">
                       <h3 class="sidebar-h3-title">{{ $post->content_title }}</h3>
                     </a>
                   </div>

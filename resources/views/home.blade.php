@@ -25,12 +25,12 @@
           @foreach ($articles as $key=>$article)
             <div class="single-recent-blog-post">
               <div class="details mt-20">
-                <a href="{{ url('article/'.$article->slug) }}">
+                <a href="{{ url('/'.$article->slug) }}">
                   <h2 class="home-article-title">{{$article->content_title}}</h2>
                 </a>
                 <p class="content-description"> {!!$article->content_description!!}</p>
                 <p class="content"> {!! $article->content !!} </p>
-                <a class="button" href="{{ url('article/'.$article->slug) }}">YAZININ SAYFASINA GİT <i class="ti-arrow-right"></i></a>
+                <a class="button" href="{{ url('/'.$article->slug) }}">YAZININ SAYFASINA GİT <i class="ti-arrow-right"></i></a>
               </div>
             </div>
             @endforeach
@@ -70,7 +70,7 @@
                         </ul>
                       </div>
                       <div class="details mt-20">
-                        <a href="{{ url('article', ['id' => $post->slug]) }}">
+                        <a href="{{ url('', ['id' => $post->slug]) }}">
                           <h3 class="sidebar-h3-title">{{ $post->content_title }}</h3>
                         </a>
                       </div>

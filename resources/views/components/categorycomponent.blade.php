@@ -24,7 +24,7 @@
         </div>
         <ul class="w3-ul w3-hoverable">
           @foreach($popularPosts as $post)
-          <a href="{{ url('article', ['id' => $post->slug]) }}" class="sidebar-slug">
+          <a href="{{ url('', ['id' => $post->slug]) }}" class="sidebar-slug">
             <li class="w3-padding-12 w3-hover-text-white">
               <span>{{ $post->content_title }}</span>
             </li>

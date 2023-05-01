@@ -35,7 +35,7 @@
         
           <div class="w3-row">
             <div class="w3-col m8 s12">
-              <a class="article-content-link" href="{{url('article/'.$article->slug)}}"> Yazının tamamı için tıklayınız. » </a>
+              <a class="article-content-link" href="{{url('/'.$article->slug)}}"> Yazının tamamı için tıklayınız. » </a>
             </div>
             <div class="w3-col m4 w3-hide-small w3-right">
               <p><span class="w3-right">Yorumlar {{ $article->comments === NULL ? 0 : count($article->comments)}}</span></p>
