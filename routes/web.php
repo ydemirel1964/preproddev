@@ -73,6 +73,7 @@ Route::get('/admin/categorycreate', [AdminCategoryController::class,'createForm'
 Route::post('/admin/category/create', [AdminCategoryController::class, 'create'])->middleware('auth');
 Route::get('/admin/category/update/{id}', [AdminCategoryController::class, 'update'])->middleware('auth');
 Route::get('/admin/category/delete/{id}', [AdminCategoryController::class, 'delete'])->middleware('auth');
+Route::get('/admin/contact/delete/{id}', [AdminContactController::class, 'delete'])->middleware('auth');
 Route::post('/admin/article-search', [AdminArticleController::class, 'articleSearch'])->middleware('auth');
 });
 

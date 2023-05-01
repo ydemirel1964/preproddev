@@ -17,8 +17,9 @@ class ContactController extends Controller
    
    
     public function delete($id){
-        $categories=categories::where('id',$id)->delete();
-        return redirect('/dashboard/categories');
+        $categories=contacts::where('id',$id)->delete();
+        $contacts = contacts::orderBy('id', 'desc')->simplePaginate(10);
+        return view('admin/contact', ['contacts'=>$contacts]);
     }
    
 }

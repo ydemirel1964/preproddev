@@ -16,7 +16,7 @@
 <?php foreach ($articles as $article){    ?>
         <url>
             <loc>{{ url('/') }}/article/<?php echo $article['slug']; ?></loc>
-            <lastmod><?php echo date_format(date_create($article['updated_at']),"Y-m-d\TH:i:sP"); ?></lastmod>
+            <lastmod>{{ date('Y-m-d H:i:s') }}</lastmod>
         </url>
 <?php } ?>
 <url>

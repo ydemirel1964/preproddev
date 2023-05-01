@@ -15,8 +15,13 @@
     <ul class="w3-ul w3-card-4 w3-white">
         @foreach($contacts as $contact)
       <li class="w3-padding-16">
-        <span class="w3-medium">
-            {{$contact->fullName}} - {{$contact->email}} - {{$contact->created_at}}</span><br>
+          <span class="w3-medium">
+            {{$contact->fullName}} - {{$contact->email}} - {{$contact->created_at}}
+          </span>
+            <br>
+            <a href="{{ url('admin/contact/delete/'.$contact->id) }}" style="text-decoration:none;margin:">
+              <button class="form-control" style="margin-top:5px;">SİL</button>
+            </a>
       </li>
       @endforeach
     </ul>
