@@ -4,27 +4,28 @@
 
 <url>
     <loc>https://www.preproddev.com/</loc>
-    <lastmod>2022-09-19T08:47:19+00:00</lastmod>
+    <lastmod>{{ date('Y-m-d') }}</lastmod>
 </url>
 
 <?php foreach ($categories as $category){    ?>
         <url>
             <loc>{{ url('/') }}/category/<?php echo $category['slug']; ?></loc>
-            <lastmod><?php echo date_format(date_create($category['updated_at']),"Y-m-d\TH:i:sP"); ?></lastmod>
+            <lastmod>
+            {{ date('Y-m-d') }}</lastmod>
         </url>
 <?php } ?>
 <?php foreach ($articles as $article){    ?>
         <url>
             <loc>{{ url('/') }}/<?php echo $article['slug']; ?></loc>
-            <lastmod>{{ date('Y-m-d H:i:s') }}</lastmod>
+            <lastmod>{{ date('Y-m-d') }}</lastmod>
         </url>
 <?php } ?>
 <url>
     <loc>https://www.preproddev.com/hakkimizda</loc>
-    <lastmod>2022-09-19T08:47:19+00:00</lastmod>
+    <lastmod>{{ date('Y-m-d') }}</lastmod>
 </url>
 <url>
     <loc>https://www.preproddev.com/iletisim</loc>
-    <lastmod>2022-09-19T08:47:19+00:00</lastmod>
+    <lastmod>{{ date('Y-m-d') }}</lastmod>
 </url>
 </urlset>
