@@ -12,19 +12,32 @@
   <hr>
   <div class="w3-container">
     <h5>Son Mesajlarınız</h5>
-    <ul class="w3-ul w3-card-4 w3-white">
-        @foreach($contacts as $contact)
-      <li class="w3-padding-16">
-          <span class="w3-medium">
-            {{$contact->fullName}} - {{$contact->email}} - {{$contact->created_at}}
-          </span>
-            <br>
-            <a href="{{ url('admin/contact/delete/'.$contact->id) }}" style="text-decoration:none;margin:">
-              <button class="form-control" style="margin-top:5px;">SİL</button>
-            </a>
-      </li>
+    <table class="w3-table-all">
+      <thead>
+        <tr class="w3">
+          <th>İsim</th>
+          <th>Email</th>
+          <th>Başlık</th>
+          <th>Mesaj</th>
+          <th>Tarih</th>
+          <th>#</th>
+        </tr>
+      </thead>
+      @foreach($contacts as $contact)
+      <tr>
+        <td>{{$contact->fullName}}</td>
+        <td>{{$contact->email}}</td>
+        <td>{{$contact->title}}</td>
+        <td>{{$contact->body}}</td>
+        <td>{{$contact->created_at}}</td>
+        <td>            
+          <a href="{{ url('admin/contact/delete/'.$contact->id) }}" style="text-decoration:none;margin:">
+          <button class="form-control" style="margin-top:5px;">SİL</button>
+        </a></td>
+      </tr>
       @endforeach
-    </ul>
+    </table>
+ 
   </div>
   <!-- End page content -->
 @endsection
