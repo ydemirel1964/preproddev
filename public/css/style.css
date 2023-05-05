@@ -2170,3 +2170,9 @@ a{
     font-size: 25px;
     font-weight: 350;
 }
+
+pre{
+    background-color:#F3F3F3 ;
+    color:black;
+    padding: 20px 20px 20px 30px;
+}
