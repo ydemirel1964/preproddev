@@ -2,7 +2,7 @@
 <html prefix="og: https://ogp.me/ns#" lang="tr">
 <head>
   <link rel="stylesheet" href="{{ URL::asset('vendors/main.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('css/style.css?v=').time() }}">
   
   <meta name="yandex-verification" content="0caaeca8d31605b5" />
   <meta charset="UTF-8" />
