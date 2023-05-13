@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\ProfileController as UserProfileController;
@@ -35,21 +36,29 @@ require __DIR__ . '/auth.php';
 Route::group(['middleware' => ['urlControl']], function () {
 
     Route::middleware(['auth', 'user-access:admin'])->group(function () {
+        //Article
+        Route::get('/dashboard/articles', [AdminArticleController::class, 'index'])->middleware(['auth']);
         Route::get('/admin/articlecreate', [AdminArticleController::class, 'createForm'])->middleware('auth');
         Route::post('/admin/article/create', [AdminArticleController::class, 'create'])->middleware('auth');
         Route::get('/admin/article/updateform/{id}', [AdminArticleController::class, 'updateform'])->middleware('auth');
         Route::post('/admin/article/update/{id}', [AdminArticleController::class, 'update'])->middleware('auth');
         Route::get('/admin/article/delete/{id}', [AdminArticleController::class, 'delete'])->middleware('auth');
-
+        //Dashboard
         Route::get('/dashboard', [ProfileController::class, 'index'])->middleware(['auth'])->name('dashboard');
-        Route::get('/dashboard/contact', [AdminContactController::class, 'index'])->middleware(['auth']);
+        //User
+        Route::get('/dashboard/users', [AdminUserController::class, 'index'])->middleware(['auth']);
+        Route::get('/admin/user/update/{id}', [AdminUserController::class, 'update'])->middleware('auth');
+        Route::get('/admin/user/delete/{id}', [AdminUserController::class, 'delete'])->middleware('auth');
+        //Categories
         Route::get('/dashboard/categories', [AdminCategoryController::class, 'index'])->middleware(['auth']);
-        Route::get('/dashboard/articles', [AdminArticleController::class, 'index'])->middleware(['auth']);
         Route::get('/admin/categorycreate', [AdminCategoryController::class, 'createForm'])->middleware('auth');
         Route::post('/admin/category/create', [AdminCategoryController::class, 'create'])->middleware('auth');
         Route::get('/admin/category/update/{id}', [AdminCategoryController::class, 'update'])->middleware('auth');
         Route::get('/admin/category/delete/{id}', [AdminCategoryController::class, 'delete'])->middleware('auth');
+        //Contact
+        Route::get('/dashboard/contact', [AdminContactController::class, 'index'])->middleware(['auth']);
         Route::get('/admin/contact/delete/{id}', [AdminContactController::class, 'delete'])->middleware('auth');
+        //Search
         Route::post('/admin/article-search', [AdminArticleController::class, 'articleSearch'])->middleware('auth');
     });
 
