@@ -59,7 +59,7 @@ Route::group(['middleware' => ['urlControl']], function () {
         Route::get('/dashboard/contact', [AdminContactController::class, 'index'])->middleware(['auth']);
         Route::get('/admin/contact/delete/{id}', [AdminContactController::class, 'delete'])->middleware('auth');
         //Search
-        Route::post('/admin/article-search', [AdminArticleController::class, 'articleSearch'])->middleware('auth');
+        Route::get('/admin/article-search', [AdminArticleController::class, 'articleSearch'])->middleware('auth');
     });
 
 

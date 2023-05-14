@@ -7,7 +7,6 @@
 @section('content')
 <main class="site-main">
     <!--================Hero Banner start =================-->  
-    <section class="mb-30px">
       <div class="container">
         <div class="hero-banner">
           <div class="hero-banner__content">
@@ -16,11 +15,13 @@
           </div>
         </div>
       </div>
-    </section>
        <!--================ Start Blog Post Area =================-->
-       <section class="blog-post-area section-margin mt-4">
+
+
+      <section class="blog-post-area section-margin mt-4">
       <div class="container">
         <div class="row">
+
           <div class="col-lg-8">
           @foreach ($articles as $key=>$article)
             <div class="single-recent-blog-post">
@@ -42,6 +43,8 @@
               <div class="widget-wrap">
                 
               <div class="single-sidebar-widget post-category-widget">
+
+
                 <div class="text-center">
                   <div class="text-center single-sidebar-widget__title"> Kategoriler </div>
                   <ul class="cat-list mt-20">
@@ -78,7 +81,10 @@
                     @endforeach 
                   </div>
                 </div>
+
+            </div>
         </div>
+          </div>
     </section>
   </main>
 @endsection

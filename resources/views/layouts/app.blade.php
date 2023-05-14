@@ -20,17 +20,22 @@
       dataLayer.push(arguments);
     }
    gtag('js', new Date());
-    gtag('config', 'G-6HPCJ8LJ9C');
+   gtag('config', 'G-6HPCJ8LJ9C');
   </script>
 <meta name="generator" content="All in One SEO (AIOSEO) 4.2.4 " />
   @yield('head')
 </head>
 
 <body>
+  <div style="background-color:#eceb98;padding:15px 15px 15px 15px">
+  <div class="container">
+  <div id="top-area"><a href="#"></a></div>
+  </div>
+  </div>
   <header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container box_1620">
+        <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>

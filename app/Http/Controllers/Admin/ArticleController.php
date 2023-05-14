@@ -22,9 +22,7 @@ class ArticleController extends Controller
 
     public function articleSearch(request $request)
     {
-        info($request->article_search);
-        $articles = articles::with('users')->with('comments')->where('content_title','LIKE','%'.$request->article_search.'%')->orderBy('id', 'desc')->simplePaginate(10);
-        log::info($articles);
+        $articles = articles::with('users')->with('comments')->where('content_title','LIKE','%'.$request->article_search.'%')->orderBy('id', 'desc')->simplePaginate(10)->withQueryString();
         return view('admin/article', ['articles' => $articles]);
     }
 

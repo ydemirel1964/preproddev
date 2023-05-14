@@ -15,8 +15,7 @@
       </button>
     </p>
   </a>
-  <form action="{{url('/admin/article-search')}}" method="POST" enctype="multipart/form-data">
-    @csrf
+  <form action="{{url('/admin/article-search')}}" method="GET" enctype="multipart/form-data">
     <div class="row">
       <div class="col-9">
         <input class="form-control" style="float:left" name="article_search"><br><br>
