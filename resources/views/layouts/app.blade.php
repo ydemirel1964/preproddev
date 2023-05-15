@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{ URL::asset('vendors/main.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css?v=').time() }}">
     <meta name="yandex-verification" content="0caaeca8d31605b5" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -44,10 +45,10 @@
                             <ul class="nav navbar-nav menu_nav">
                                 <li class="nav-item active"><a class="nav-link title" href="/">Preprod-Dev</a>
                                 </li>
-                                <li class="nav-item justify-content-center"><a class="nav-link"
+                                <!--<li class="nav-item justify-content-center"><a class="nav-link"
                                         href="{{ url('hakkimizda') }}">Hakkımızda</a></li>
                                 <li class="nav-item justify-content-center"><a class="nav-link"
-                                        href="{{ url('iletisim') }}">İletişim</a></li>
+                                        href="{{ url('iletisim') }}">İletişim</a></li> -->
                             </ul>
                             <ul class="nav navbar-nav navbar-right navbar-social">
                                 <li><a href="https://www.facebook.com/people/Preprod-Dev/100089444574092/"><i

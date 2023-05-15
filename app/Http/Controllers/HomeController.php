@@ -19,8 +19,8 @@ class HomeController extends Controller
 
         $categoryService = new categoryService();
         $popularCategories = $categoryService->getPopularCategories();
-        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->paginate(5);
-        $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->get();
+        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->paginate(3);
+        $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->limit(10)->get();
         $tags = [];
         return view('home', ['articles'=>$articles , 'popularCategories'=>$popularCategories, 'allArticles'=>$popularArticles,'tags'=> $tags]);
     }
