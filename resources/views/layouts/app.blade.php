@@ -2,8 +2,6 @@
 <html prefix="og: https://ogp.me/ns#" lang="tr">
 <head>
   <link rel="stylesheet" href="{{ URL::asset('vendors/main.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('css/style.css?v=').time() }}">
-  
   <meta name="yandex-verification" content="0caaeca8d31605b5" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -27,14 +25,10 @@
 </head>
 
 <body>
-  <div style="background-color:#eceb98;padding:15px 15px 15px 15px">
-  <div class="container">
-  <div id="top-area"><a href="#"></a></div>
-  </div>
-  </div>
+ <div class="container">
   <header class="header_area">
     <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -42,19 +36,10 @@
             <span class="icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav justify-content-center">
-              <li class="nav-item active"><a class="nav-link" href="/">Preprod-Dev</a></li>
-              <li class="nav-item"><a class="nav-link" href="/">Yazılar</a></li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategoriler</a>
-                <ul class="dropdown-menu">
-                  @foreach($popularCategories as $category)
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ url('category', ['id' => $category->slug]) }}">{{ $category->category }}</a>
-                  </li>
-                  @endforeach
-                </ul>
-              </li>
+            <ul class="nav navbar-nav menu_nav justify-content-left">
+              <li class="nav-item active">
+                <a class="nav-link title" href="/">Preprod-Dev</a></li>
+             
               <li class="nav-item"><a class="nav-link" href="{{ url('hakkimizda') }}">Hakkımızda</a></li>
               <li class="nav-item"><a class="nav-link" href="{{ url('iletisim') }}">İletişim</a></li>
             </ul>
@@ -68,16 +53,12 @@
       </nav>
     </div>
   </header>
-  </div>
-  </nav>
-  </div>
-  </div>
-  </div>
   <div class="container">
     <main >
       @yield('content')
     </main>
   </div>
+</div>
   <!--================ Start Footer Area =================-->
   <footer class="footer-area section-padding">
     <div class="container">
@@ -93,7 +74,7 @@
         <div class="col-lg-1  col-md-6 col-sm-6"></div>
         <div class="col-lg-5  col-md-6 col-sm-6"></div>
         <!--
-        <div class="col-lg-5  col-md-6 col-sm-6">
+<div class="col-lg-5  col-md-6 col-sm-6">
           <div class="single-footer-widget">
             <h6>Haber Bülteni</h6>
             <p>Son eklenen yazılar ile ilgili bilgi almak için mail adresinizi bırakabilirsiniz.</p>
@@ -146,7 +127,8 @@
   <!--================ End Footer Area =================-->
   <script src="{{ URL::asset('vendors/main.js') }}"></script>
   <script src="{{ URL::asset('js/main.js') }}"></script>
-  </div>
+  
+</body>
 </body>
 
 </html>

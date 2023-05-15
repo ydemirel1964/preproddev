@@ -6,28 +6,31 @@
 
 @endsection
 @section('content')
-<div class="w3-row" style="margin:10px;">
-
-  <a style="color: black;text-decoration:none;" href="{{url('admin/articlecreate')}}">
+<div class="container">
+  <br><br>
+<div class="row">
+ 
+  <form action="{{url('/admin/article-search')}}" method="GET" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-8">
+      </div>
+      <div class="col-4">
+        <input class="form-control" style="float:left" name="article_search"><br><br>
+        <button type="submit" style="float:right;width:150px;" class="btn btn-primary">ARA</button>
+      </div>
+     
+    </div>
+  </form>
+  <a style="color:black;text-decoration:none;" href="{{url('admin/articlecreate')}}">
     <p>
-      <button style="margin:20px;" class="w3-button w3-padding-large w3-white w3-border w3-right">
+      <button class="btn btn-primary">
         <b>YENİ YAZI EKLEME »</b>
       </button>
     </p>
   </a>
-  <form action="{{url('/admin/article-search')}}" method="GET" enctype="multipart/form-data">
-    <div class="row">
-      <div class="col-9">
-        <input class="form-control" style="float:left" name="article_search"><br><br>
-        <button type="submit" style="float:right;width:150px;" class="btn btn-primary">ARA</button>
-      </div>
-      <div class="col-6">
-      </div>
-    </div>
-  </form>
   <br>
 
-  <table class="w3-table-all">
+  <table class="table table-striped table-bordered">
     <thead>
       <tr class="w3">
         <th>Başlık</th>
@@ -56,9 +59,10 @@
   <!-- END BLOG ENTRIES -->
 
 </div>
-<div class="w3-center">
+<div class="d-flex justify-content-center">
   {{ $articles->links() }}<br><br>
 </div>
 <!-- END w3-content -->
+</div>
 </div>
 @endsection

@@ -123,7 +123,9 @@ a{
     width:100%
 }
 .header_area .navbar .nav .nav-item{
-    margin-right:45px
+    margin-right:45px;
+    align-items: center;
+    justify-content: center;
 }
 .header_area .navbar .nav .nav-item .nav-link{
     font-family:inherit,serif;
@@ -2175,4 +2177,8 @@ pre{
     background-color:#F3F3F3 ;
     color:black;
     padding: 20px 20px 20px 30px;
+}
+
+.title{
+    font-size: 25px !important;
 }

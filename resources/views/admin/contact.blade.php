@@ -5,16 +5,12 @@
 @section('css')
 @endsection
 @section('content')
-  <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-    <h5><b> PP Admin</b></h5>
-  </header>
-  <hr>
-  <div class="w3-container">
-    <h5>Son Mesajlarınız</h5>
-    <table class="w3-table-all">
+  <div class="container">
+    <br><br>
+    <h5 class="d-flex justify-content-center">Son Mesajlarınız</h5>
+    <table class="table table-striped table-bordered">
       <thead>
-        <tr class="w3">
+        <tr class="">
           <th>İsim</th>
           <th>Email</th>
           <th>Başlık</th>

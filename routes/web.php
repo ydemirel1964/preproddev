@@ -83,9 +83,6 @@ Route::group(['middleware' => ['urlControl']], function () {
     Route::get('/writerprofile/{id}', [WriterProfileController::class, 'index']);
 
     Route::get('/profile', [UserProfileController::class, 'index'])->name('userProfile');
-
-
-
     Route::post('/checkUnseenMessage', [MessageController::class, 'checkUnseenMessage']);
 });
 

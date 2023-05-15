@@ -233,7 +233,7 @@ $(function () {
 
 });
 
-
+/*
 const lessons = [
     [
         "Php nedir?Neler Yapabilir?",
@@ -276,3 +276,4 @@ setInterval(function () {
     document.getElementById('top-area').innerHTML = "<a href='"+lessons[lessonNumber][1]+"'>"+lessons[lessonNumber][0]+"</a>";
 }, 3000);
 
+*/
