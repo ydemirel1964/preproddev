@@ -130,9 +130,9 @@ a{
 .header_area .navbar .nav .nav-item .nav-link{
     font-family:inherit,serif;
     color:#3a414e;
-    font-size:15px;
+    font-size:18px;
     text-transform:capitalize;
-    font-weight:700;
+    font-weight:600;
     padding:30px 0;
     display:inline-block
 }
@@ -2180,5 +2180,5 @@ pre{
 }
 
 .title{
-    font-size: 25px !important;
+    font-weight:700 !important;
 }
