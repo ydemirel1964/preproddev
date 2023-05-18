@@ -22,6 +22,7 @@
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 </head>
+
 <body>
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
@@ -33,6 +34,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-container w3-row">
     <div class="w3-col s4">
     </div>
+
+    
     <div class="w3-col s8 w3-bar">
       <span>Hoşgeldin, <strong>{{Auth::user()->name}}</strong></span><br>
       <a href="/dashboard/contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
