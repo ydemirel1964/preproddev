@@ -66,14 +66,16 @@ Route::group(['middleware' => ['urlControl']], function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
-    Route::get('/hakkimizda', [AboutMeController::class, 'index']);
-    Route::get('/aboutme', [AboutMeController::class, 'index']);
+
+    // TODO: İlgili alanlar tasarım gereği kapatılmıştır
+    /*Route::get('/hakkimizda', [AboutMeController::class, 'index']);
+    Route::get('/aboutme', [AboutMeController::class, 'index']);*/
 
     Route::get('/iletisim', [ContactController::class, 'index']);
     Route::get('/contact', [ContactController::class, 'index']);
     Route::post('/contact/create', [ContactController::class, 'create']);
     Route::delete('/article/{id}', [ArticleController::class, 'delete']);
-    Route::get('/{slug}', [ArticleController::class, 'index']);
+    Route::get('/{slug}', [ArticleController::class, 'index']); 
 
     Route::get('/comment/create', [CommentController::class, 'create']);
     Route::get('/comment/delete', [CommentController::class, 'delete']);

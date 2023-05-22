@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Services\categoryService;
-
 use Illuminate\Support\Facades\Auth;
 use App\Models\comments;
 
@@ -18,7 +15,7 @@ class CommentController extends Controller
             $articleid = $request->articleid;
             $articleslug = $request->slug;
             $userid = Auth::user()->id;
-            $commentcreate = comments::firstOrCreate(
+            comments::firstOrCreate(
                 [
                     'comment' => "$articlecomment",
                     'article_id' => "$articleid",
@@ -28,13 +25,5 @@ class CommentController extends Controller
 
             return redirect("/article/$articleslug");
         }
-    }
-
-    public function delete(Request $request)
-    {
-        info($request);
-       // if (Auth::check()) {
-        //}
-        //return redirect('/article/' . $id);
     }
 }

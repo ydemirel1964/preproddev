@@ -38,11 +38,11 @@
             <div class="single-sidebar-widget post-category-widget">
              <div class="text-center single-sidebar-widget__title"> Kategoriler </div>
               <ul class="cat-list mt-20">
-                @foreach($popularCategories as $category)
+                @foreach($sidebarCategories as $sidebarArticle)
                 <li>
-                  <a href="{{ url('category', ['id' => $category->slug]) }}" class="d-flex justify-content-between">
-                    <h3 class="sidebar-h3-title">{{ $category->category }}</h3>
-                    <p>{{ $category->category_count}}</p>
+                  <a href="{{ url('category', ['id' => $sidebarArticle->slug]) }}" class="d-flex justify-content-between">
+                    <h3 class="sidebar-h3-title">{{ $sidebarArticle->category }}</h3>
+                    <p>{{ $sidebarArticle->category_count}}</p>
                   </a>
                 </li>
                 @endforeach
@@ -52,18 +52,18 @@
             <div class="single-sidebar-widget popular-post-widget">
               <div class="text-center single-sidebar-widget__title">Yazılar</div>
               <div class="popular-post-list">
-                @foreach($allArticles as $post)
+                @foreach($sidebarArticles as $sidebarArticle)
                 <br>
                 <div class="single-post-list">
                   <div class="thumb">
                     <ul class="thumb-info">
-                      <li><!-- <a href="#"> --> {{ $post->users->name }} <!-- </a> --></li>
-                      <li><!-- <a href="#"> --> {{ $post->created_at->format('Y-m-d') }} <!-- </a> --></li>
+                      <li><!-- <a href="#"> --> {{ $sidebarArticle->users->name }} <!-- </a> --></li>
+                      <li><!-- <a href="#"> --> {{ $sidebarArticle->created_at->format('Y-m-d') }} <!-- </a> --></li>
                     </ul>
                   </div>
                   <div class="details mt-20">
-                    <a href="{{ url('', ['id' => $post->slug]) }}">
-                      <h3 class="sidebar-h3-title">{{ $post->content_title }}</h3>
+                    <a href="{{ url('', ['id' => $sidebarArticle->slug]) }}">
+                      <h3 class="sidebar-h3-title">{{ $sidebarArticle->content_title }}</h3>
                     </a>
                   </div>
                 </div>

@@ -17,10 +17,8 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
-        $categoryService = new categoryService();
-        $popularCategories = $categoryService->getPopularCategories();
-        return view('auth.login',['popularCategories'=>$popularCategories]);
+    {   
+        return view('auth.login');
     }
 
     /**

@@ -3,25 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-
+use App\Services\articleService;
 use App\Services\categoryService;
-
-use App\Models\articles;
-use App\Models\categories;
-use App\Models\User;
 
 class HomeController extends Controller
 {
     public function index()
-    {           
-
+    {
         $categoryService = new categoryService();
-        $popularCategories = $categoryService->getPopularCategories();
-        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->paginate(3);
-        $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->limit(10)->get();
-        $tags = [];
-        return view('home', ['articles'=>$articles , 'popularCategories'=>$popularCategories, 'allArticles'=>$popularArticles,'tags'=> $tags]);
+        $articleService = new articleService();
+        $sidebarCategories = $categoryService->getSidebarCategories();
+        $sidebarArticles = $articleService->getSidebarArticles();
+        $articles = $articleService->getAllArticles();
+        return view('home', ['articles' => $articles, 'sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles]);
     }
 }

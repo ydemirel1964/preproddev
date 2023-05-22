@@ -27,7 +27,7 @@
                     </div>
                   </div>
                 </div>
-                <div style="overflow:auto">
+                <div id="article_content">
                 {!! $article->content !!}
                 </div>
               </div>
@@ -37,11 +37,11 @@
             <div class="single-sidebar-widget post-category-widget">
               <div class="text-center single-sidebar-widget__title"> Kategoriler </div>
               <ul class="cat-list mt-20">
-                @foreach($popularCategories as $category)
+                @foreach($sidebarCategories as $sidebarCategory)
                 <li>
-                  <a href="{{ url('category', ['id' => $category->slug]) }}" class="d-flex justify-content-between">
-                    <p class="text-center single-sidebar-widget__title"> {{ $category->category }} </p>
-                    <p>{{ $category->category_count}}</p>
+                  <a href="{{ url('category', ['id' => $sidebarCategory->slug]) }}" class="d-flex justify-content-between">
+                    <p class="text-center single-sidebar-widget__title"> {{ $sidebarCategory->category }} </p>
+                    <p>{{ $sidebarCategory->category_count}}</p>
                   </a>
                 </li>
                 @endforeach
@@ -50,18 +50,18 @@
             <div class="single-sidebar-widget popular-post-widget">
               <div class="text-center single-sidebar-widget__title">Yazılar</div>
               <div class="popular-post-list">
-                @foreach($allArticles as $post)
+                @foreach($sidebarArticles as $sidebarArticle)
                 <br>
                 <div class="single-post-list">
                   <div class="thumb">
                     <ul class="thumb-info">
-                      <li><!-- <a href="#"> --> {{ $post->users->name }} <!-- </a> --></li>
-                      <li><!-- <a href="#"> --> {{ $post->created_at->format('Y-m-d') }} <!-- </a> --></li>
+                      <li><!-- <a href="#"> --> {{ $sidebarArticle->users->name }} <!-- </a> --></li>
+                      <li><!-- <a href="#"> --> {{ $sidebarArticle->created_at->format('Y-m-d') }} <!-- </a> --></li>
                     </ul>
                   </div>
                   <div class="details mt-20">
-                    <a href="{{ url('', ['id' => $post->slug]) }}">
-                      <h4 class="side-article-title">{{ $post->content_title }}</h4>
+                    <a href="{{ url('', ['id' => $sidebarArticle->slug]) }}">
+                      <h4 class="side-article-title">{{ $sidebarArticle->content_title }}</h4>
                     </a>
                   </div>
                 </div>

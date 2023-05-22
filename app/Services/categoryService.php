@@ -17,7 +17,7 @@ public function getCategories()
     return $result;
 }
 
-public function getPopularCategories()
+public function getSidebarCategories()
 {
     $result = DB::table('categories')
     ->join('article_categories', 'categories.id', '=', 'article_categories.category_id')
