@@ -88,6 +88,7 @@
 }
 .navbar-brand{
     font-weight:300;
+    color: white;
 }
 .aboutme h1{
     font-size: 18px;
@@ -127,13 +128,6 @@
     margin-bottom: 20px;
 }
 .side-article-title {
-    font-size: 14px;
-    font-weight:300;
-    transition:all 0.3s ease 0s;
-    margin-bottom:0px;
-}
-
-.side-category-title {
     font-size: 14px;
     font-weight:300;
     transition:all 0.3s ease 0s;

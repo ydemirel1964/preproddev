@@ -21,6 +21,7 @@ class ArticleController extends Controller
         $articleService = new articleService();
 
         $articles = $articleService->getArticle($slug);
+        info($articles);
         $sidebarArticles = $articleService->getSidebarArticles();
         $sidebarCategories = $categoryService->getSidebarCategories();
         return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles]);

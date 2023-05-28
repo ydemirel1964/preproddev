@@ -13,8 +13,8 @@ use App\Http\Controllers\ProfileController as UserProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WriterProfileController;
 use App\Http\Controllers\searchController;
-use App\Http\Controllers\AboutMeController;
-use App\Http\Controllers\ContactController;
+//use App\Http\Controllers\AboutMeController;
+//use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\SitemapXmlController;
@@ -68,14 +68,16 @@ Route::group(['middleware' => ['urlControl']], function () {
     Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 
     // TODO: İlgili alanlar tasarım gereği kapatılmıştır
-    /*Route::get('/hakkimizda', [AboutMeController::class, 'index']);
-    Route::get('/aboutme', [AboutMeController::class, 'index']);*/
-
+    /*
+    Route::get('/hakkimizda', [AboutMeController::class, 'index']);
+    Route::get('/aboutme', [AboutMeController::class, 'index']);
     Route::get('/iletisim', [ContactController::class, 'index']);
     Route::get('/contact', [ContactController::class, 'index']);
     Route::post('/contact/create', [ContactController::class, 'create']);
+    */
+
     Route::delete('/article/{id}', [ArticleController::class, 'delete']);
-    Route::get('/{slug}', [ArticleController::class, 'index']); 
+    Route::get('/{slug}', [ArticleController::class, 'index']);
 
     Route::get('/comment/create', [CommentController::class, 'create']);
     Route::get('/comment/delete', [CommentController::class, 'delete']);
