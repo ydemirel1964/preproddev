@@ -28,10 +28,40 @@
 </head>
 
 <body>
-    <div class="header1 navbar navbar-light justify-content-center">
-        <a href="https://www.facebook.com/people/Preprod-Dev/100089444574092/"><i class="ti-facebook"></i></a>
-        <a href="https://twitter.com/PreprodDev"><i class="ti-twitter-alt"></i></a>
-        <a href="https://www.instagram.com/preproddev/"><i class="ti-instagram"></i></a>
+    <div class="header1 navbar navbar-light">
+        <div class="align-self-center">
+            <a href="https://www.facebook.com/people/Preprod-Dev/100089444574092/"><i class="ti-facebook"></i></a>
+            <a href="https://twitter.com/PreprodDev"><i class="ti-twitter-alt"></i></a>
+            <a href="https://www.instagram.com/preproddev/"><i class="ti-instagram"></i></a>
+        </div>
+        <div class="align-self-end">
+            <!-- Split dropleft button -->
+            @if(Auth::check())
+            <div class="btn-group">
+                <div class="btn-group dropleft" role="group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropleft</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Yeni Kategori Ekleme</a>
+                        <a class="dropdown-item" href="#">Yeni Yazı Ekleme</a>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Çıkış Yap</button>
+                        </form>
+                      
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary"> <a href="/profile">Profil</a></button>
+            </div>
+            @else
+            <div class="login_register">
+                <a href="/login" class="btn btn-secondary">Giriş Yap</a>
+                <a href="/register" class="btn btn-secondary">Kayıt Ol</a>
+            </div>
+            @endif
+        </div>
     </div>
     <header>
         <div class="container">

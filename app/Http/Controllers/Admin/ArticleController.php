@@ -8,7 +8,6 @@ use App\Models\categories;
 use App\Models\article_categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Throwable;
 
@@ -16,6 +15,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
+        info("deneme");
         $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->simplePaginate(10);
         return view('admin/article', ['articles' => $articles]);
     }

@@ -18,6 +18,7 @@
           <div class="article_article_title_div">
           <h1> {{$article->content_title}}</h1>
         </div>
+        <p class="content-description"> {!! $article->content_description !!}</p>
           <div class="user_details">
             <div class="float-right mt-sm-0 mt-3">
               <div class="media">

@@ -18,7 +18,7 @@ class ProfileController extends Controller
             $userid = Auth::user()->id;
             $categoryService = new categoryService();
             $categories = $categoryService->getCategories();
-            $userarticles = articles::with('users')->where('user_id', "$userid")->orderBy('articles.id', 'DESC')->simplePaginate(10);
+            $userarticles = articles::with('users')->where('user_id', "$userid")->orderBy('articles.id', 'DESC')->paginate(5);
             $popularArticles = articles::with('users')->orderBy('articles.id', 'desc')->limit(5)->get();
             return view('profile', ['userarticles' => $userarticles, 'categories' => $categories, 'popularPosts' => $popularArticles]);
         }
