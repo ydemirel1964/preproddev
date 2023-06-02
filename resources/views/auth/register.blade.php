@@ -6,7 +6,7 @@
 <title>Anasayfa - Preprod Dev</title>
 @endsection
 @section('content')
-<div class="container">
+<div class="container register_page_body">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col">
@@ -53,7 +53,8 @@
         </div>
         <div class="col register_page_info">
             PREPROD-DEV Programlama ve Programlama teknolojileri hakkında yazılar içermektedir. Sizde kayıt
-            olarak ve bilgilerinizi paylaşarak siteye ve yeni bilgiler edinmek isteyen kişilere katkıda bulunabilirsiniz.</div>
+            olarak ve bilgilerinizi paylaşarak siteye ve yeni bilgiler edinmek isteyen kişilere katkıda
+            bulunabilirsiniz.</div>
         <div class="col-md-2"></div>
     </div>
 </div>

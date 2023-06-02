@@ -87,7 +87,9 @@ Route::group(['middleware' => ['urlControl']], function () {
     Route::get('/category/{slug}', [CategoryController::class, 'index']);
     Route::get('/writerprofile/{id}', [WriterProfileController::class, 'index']);
     Route::get('/profile', [UserProfileController::class, 'index'])->middleware("auth")->name('userProfile');
+    Route::get('/profile/createArticle', [ArticleController::class, 'createForm'])->middleware("auth");
     Route::post('/checkUnseenMessage', [MessageController::class, 'checkUnseenMessage']);
+    
     Route::get('/{slug}', [ArticleController::class, 'index']);
 });
 

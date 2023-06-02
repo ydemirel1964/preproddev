@@ -25,6 +25,18 @@ class ArticleController extends Controller
         return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles]);
     }
 
+    public function createForm()
+    {
+        if (Auth::check()) {
+            try {
+                $categories = categories::get();
+                return view('articleCreate', ['categories' => $categories]);
+            } catch (Throwable $e) {
+                return $e;
+            }
+        }
+    }
+
     public function create(request $request)
     {
         // FIXME: Bu alan ileriki aşamada kullanıcıların yazı paylaşması için yapılacaktır

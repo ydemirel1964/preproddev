@@ -691,10 +691,13 @@ color: black;
   font-weight: 400;
 }
 
-.profile_header_area{
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  background-color: grey;
-  margin-bottom: 30px;
+
+.register_page_body{
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.profile_page_body{
+  margin-top: 50px;
+  margin-bottom: 20px;
 }

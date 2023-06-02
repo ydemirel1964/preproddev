@@ -15,6 +15,8 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9579347278267224"
         crossorigin="anonymous"></script><!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HPCJ8LJ9C"></script>
+
+   
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -50,7 +52,7 @@
                             @csrf
                             <button type="submit" class="dropdown-item">Çıkış Yap</button>
                         </form>
-                      
+
                     </div>
                 </div>
                 <button type="button" class="btn btn-secondary"> <a href="/profile">Profil</a></button>
