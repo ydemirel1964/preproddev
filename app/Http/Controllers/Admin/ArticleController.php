@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Models\articles;
@@ -15,14 +14,13 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        info("deneme");
         $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->simplePaginate(10);
         return view('admin/article', ['articles' => $articles]);
     }
 
     public function articleSearch(request $request)
     {
-        $articles = articles::with('users')->with('comments')->where('content_title','LIKE','%'.$request->article_search.'%')->orderBy('id', 'desc')->simplePaginate(10)->withQueryString();
+        $articles = articles::with('users')->with('comments')->where('content_title', 'LIKE', '%' . $request->article_search . '%')->orderBy('id', 'desc')->simplePaginate(10)->withQueryString();
         return view('admin/article', ['articles' => $articles]);
     }
 
@@ -40,7 +38,7 @@ class ArticleController extends Controller
                 $content = $request->articlecontent;
                 $slug = $request->articleslug;
                 $metatags = $request->metatags;
-    
+
                 $contentdescription = $request->articlecontentdescription;
                 $contentcategory = $request->categories;
                 $userid = Auth::user()->id;
@@ -62,7 +60,7 @@ class ArticleController extends Controller
                         ]
                     );
                 }
-                return redirect('/dashboard/articles');
+                return redirect('/admin/articles');
             } catch (Throwable $e) {
                 return $e;
             }
@@ -76,7 +74,7 @@ class ArticleController extends Controller
             $articlecategorydelete = article_categories::where('article_id', $id)->delete();
             $articledelete = articles::where('id', $id)->delete();
         }
-        return redirect('/dashboard/articles');
+        return redirect('/admin/articles');
     }
     public function updateform(request $request)
     {
@@ -104,7 +102,11 @@ class ArticleController extends Controller
             $content = $request->articlecontent;
             $contentcategory = $request->categories;
             $articlesupdate = articles::where([['user_id', "$id"], ['id', "$articleid"]])->update([
-                'content_title' => "$articlecontenttitle", 'slug' => "$slug", 'metatags' => "$metatags", 'content' => "$content", 'content_description' => "$articlecontentdescription"
+                'content_title' => "$articlecontenttitle",
+                'slug' => "$slug",
+                'metatags' => "$metatags",
+                'content' => "$content",
+                'content_description' => "$articlecontentdescription"
             ]);
             article_categories::whereNotIn('category_id', $contentcategory)->where('article_id', $articleid)->delete();
             foreach ($contentcategory as $category) {

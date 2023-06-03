@@ -16,7 +16,7 @@
         crossorigin="anonymous"></script><!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HPCJ8LJ9C"></script>
 
-   
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -31,7 +31,7 @@
 
 <body>
     <div class="header1 navbar navbar-light">
-        <div class="align-self-center">
+        <div class="align-self-center icons">
             <a href="https://www.facebook.com/people/Preprod-Dev/100089444574092/"><i class="ti-facebook"></i></a>
             <a href="https://twitter.com/PreprodDev"><i class="ti-twitter-alt"></i></a>
             <a href="https://www.instagram.com/preproddev/"><i class="ti-instagram"></i></a>
@@ -46,8 +46,8 @@
                         <span class="sr-only">Toggle Dropleft</span>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Yeni Kategori Ekleme</a>
-                        <a class="dropdown-item" href="#">Yeni Yazı Ekleme</a>
+                        <a class="dropdown-item" href="/profile/create-category">Yeni Kategori Ekleme</a>
+                        <a class="dropdown-item" href="/profile/create-article">Yeni Yazı Ekleme</a>
                         <form action="/logout" method="post">
                             @csrf
                             <button type="submit" class="dropdown-item">Çıkış Yap</button>
@@ -55,7 +55,7 @@
 
                     </div>
                 </div>
-                <button type="button" class="btn btn-secondary"> <a href="/profile">Profil</a></button>
+                <a href="/profile" class="btn btn-secondary profile-button"> Profil</a>
             </div>
             @else
             <div class="login_register">

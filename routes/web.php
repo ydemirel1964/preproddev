@@ -86,16 +86,36 @@ Route::group(['middleware' => ['urlControl']], function () {
 
     Route::get('/category/{slug}', [CategoryController::class, 'index']);
     Route::get('/writerprofile/{id}', [WriterProfileController::class, 'index']);
+
     Route::get('/profile', [UserProfileController::class, 'index'])->middleware("auth")->name('userProfile');
-    Route::get('/profile/createArticle', [ArticleController::class, 'createForm'])->middleware("auth");
+    Route::get('/profile/create-article', [ArticleController::class, 'createForm'])->middleware("auth");
+    Route::post('/profile/create-article', [ArticleController::class, 'create'])->middleware("auth");
+
+    Route::get('/profile/create-category', [CategoryController::class, 'createForm'])->middleware("auth");
+    Route::post('/profile/create-category', [CategoryController::class, 'create'])->middleware("auth");
+
     Route::post('/checkUnseenMessage', [MessageController::class, 'checkUnseenMessage']);
-    
+
     Route::get('/{slug}', [ArticleController::class, 'index']);
 });
 
 
 //Clear all cache
 Route::get('/config/cache-clear', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('optimize:clear');
+    Artisan::call('optimize');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('route:clear');
+    Artisan::call('route:cache');
+    Artisan::call('view:clear');
+    Artisan::call('view:cache');
+    return '<h1>Tüm cacheler silindi.</h1>';
+});
+
+//Clear all cache
+Route::get('/config/cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('optimize:clear');
     Artisan::call('optimize');

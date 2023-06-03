@@ -51,7 +51,7 @@
 
       <div class="w3-col s8 w3-bar">
         <span>Hoşgeldin, <strong>{{Auth::user()->name}}</strong></span><br>
-        <a href="/dashboard/contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+        <a href="/admin/contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
         <form action="/logout" method="post">

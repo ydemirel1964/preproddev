@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Services\articleService;
 use App\Services\categoryService;
-
 use App\Models\articles;
 use App\Models\comments;
 use App\Models\categories;
 use App\Models\article_categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Throwable;
 
 class ArticleController extends Controller
@@ -25,7 +25,7 @@ class ArticleController extends Controller
         return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles]);
     }
 
-    public function createForm()
+    public function createForm(request $request)
     {
         if (Auth::check()) {
             try {
@@ -39,31 +39,46 @@ class ArticleController extends Controller
 
     public function create(request $request)
     {
-        // FIXME: Bu alan ileriki aşamada kullanıcıların yazı paylaşması için yapılacaktır
         if (Auth::check()) {
             try {
+                $validator = Validator::make($request->all(), [
+                    'articlecontenttitle' => 'required|min:30|max:255',
+                    'articlecontentdescription' => 'max:500',
+                    'articlecontent' => 'required|max:10000|min:300',
+                    'categories' => 'required|array|min:1'
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect('/profile/create-article')
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+
+
                 $contenttitle = $request->articlecontenttitle;
-                $content = $request->articlecontent;
                 $contentdescription = $request->articlecontentdescription;
-                $contentcategory = $request->categories;
+                $content = $request->articlecontent;
                 $userid = Auth::user()->id;
+                $slug = $userid . "-" . time();
+                $contentcategory = $request->categories;
                 $articlecreate = articles::firstOrCreate(
                     [
                         'content_title' => "$contenttitle",
                         'content_description' => "$contentdescription",
                         'content' => "$content",
+                        'slug' => "$slug",
                         'user_id' => $userid
                     ]
                 );
                 foreach ($contentcategory as $category) {
-                    $categorycreate = article_categories::withTrashed()->firstOrCreate(
+                    article_categories::firstOrCreate(
                         [
                             'article_id' => $articlecreate->id,
                             'category_id' => $category
                         ]
                     );
                 }
-                return redirect('/dashboard/articles');
+                return redirect('/profile');
             } catch (Throwable $e) {
                 return $e;
             }

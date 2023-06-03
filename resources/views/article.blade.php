@@ -3,7 +3,9 @@
 @if(isset($articles[0]->content_description))
 <meta name="description" content="{{$articles[0]->content_description}}}}" />
 <title>{{ $articles[0]->content_title}} - Preprod Dev</title>
+@if($articles[0]->metatags !== null)
 <meta name="keywords" content='{{ $articles[0]->metatags}}'>
+@endif
 @endif
 @endsection
 @section('content')
@@ -14,25 +16,21 @@
     @foreach ($articles as $key=>$article)
     <div class="row">
       <div class="col-lg-8">
-        <div class="main_blog_details">
-          <div class="article_article_title_div">
-          <h1> {{$article->content_title}}</h1>
-        </div>
-        <p class="content-description"> {!! $article->content_description !!}</p>
-          <div class="user_details">
-            <div class="float-right mt-sm-0 mt-3">
-              <div class="media">
-                <div class="media-body">
-                  <h5>{{ $article->users->name }}</h5>
-                  <p>{{ $article->created_at }}</p>
-                </div>
+        <div class="card">
+          <div class="card-header text-center">
+              <div class="text-left">
+                  <div class="user-info-area">{{ $article->users->name }}
+                  <p>{{ $article->created_at }}</p></div>
               </div>
-            </div>
+              <a href="{!! $article->slug !!}">
+                  <h2> {{$article->content_title}}</h2>
+              </a>
+              <p class="content-description"> {!! $article->content_description !!}</p>
           </div>
-          <div id="article_content">
-            {!! $article->content !!}
+          <div class="card-body">
+              <p class="card-text article-content"> {!! $article->content !!}</p>
           </div>
-        </div>
+      </div>
       </div>
       @include('layouts.sidebar')
     </div>

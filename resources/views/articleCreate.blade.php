@@ -12,34 +12,38 @@
 @section('content')
 <div class="container profile_page_body">
     <div class="row">
-        <div class="col-md-3">
-            <div><a href="/" class="btn btn-secondary btn-block"> Yazı Ekle</a></div><br>
-            <div><a href="/" class="btn btn-secondary btn-block"> Kategori Ekle</a></div>
-        </div>
-        <div class="col-md-1"></div>
+
+        <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form action="{{url('/admin/article/create')}}" method="POST" enctype="multipart/form-data">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <form action="{{url('/profile/create-article')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card shadow mb-4">
                     <div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Yazı Başlığı</label>
+                                <label>Yazı Başlığı **</label>
                                 <input class="form-control" name="articlecontenttitle">
                             </div>
 
                             <div class="form-group">
-                                <label>Yazı Özeti</label>
+                                <label>Yazı Özeti </label>
                                 <input class="form-control" name="articlecontentdescription">
                             </div>
                             <div class="form-group">
-                                <label>Yazı İçeriği</label>
-                                <textarea class="form-control" id="summernote" name="articlecontent"
-                                    rows="10"></textarea>
+                                <label>Yazı İçeriği **</label>
+                                <textarea class="form-control" id="summernote" name="articlecontent" rows="10"></textarea>
                             </div>
-
                             <div class="form-group">
-                                Kategori
+                                Kategori **
                                 <select name="categories[]" class="form-control" multiple="multiple">
                                     @if(count($categories)>0)
                                     @foreach($categories as $category)
@@ -54,6 +58,7 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-2"></div>
 
         <script type="application/javascript">
             $('#summernote').summernote({

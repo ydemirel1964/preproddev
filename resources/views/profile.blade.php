@@ -9,11 +9,10 @@
 
 <div class="container profile_page_body">
   <div class="row">
-    <div class="col-md-3">
-      <div><a href="/" class="btn btn-secondary btn-block"> Yazı Ekle</a></div><br>
-      <div><a href="/" class="btn btn-secondary btn-block"> Kategori Ekle</a></div>
+    <div class="col-md-4">
+      <div><a href="/profile/create-article" class="btn btn-secondary btn-block"> Yazı Ekle</a></div><br>
+      <div><a href="/profile/create-category" class="btn btn-secondary btn-block"> Kategori Ekle</a></div>
     </div>
-      <div class="col-md-1"></div>
     <div class="col-md-8">
       <div>
         @if(count($userArticles)>0)

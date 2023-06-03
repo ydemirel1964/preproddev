@@ -6,6 +6,8 @@ use App\Services\articleService;
 use App\Services\categoryService;
 use App\Models\categories;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Throwable;
 
 class CategoryController extends Controller
 {
@@ -44,5 +46,18 @@ class CategoryController extends Controller
 
         return view('category', ['article_categories' => $articleGroup, 'sidebarArticles' => $sidebarArticles, 'category_name' => $categoryName, 'sidebarCategories' => $sidebarCategories]);
     }
+
+    public function createForm()
+    {
+        if (Auth::check()) {
+            try {
+                $categories = categories::get();
+                return view('categoryCreate', ['categories' => $categories]);
+            } catch (Throwable $e) {
+                return $e;
+            }
+        }
+    }
+
 
 }
