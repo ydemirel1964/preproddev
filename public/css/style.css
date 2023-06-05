@@ -648,7 +648,7 @@ header {
   height: 50px;
 }
 
-.header1 .icons a{
+.header1 .icons a {
   margin-left: 20px;
   margin-right: 20px;
   color: purple;
@@ -723,4 +723,12 @@ header {
 
 .card-body {
   font-size: 14px;
+}
+
+.category_info {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  background-color: grey;
+  font-weight: 300;
 }

@@ -17,6 +17,10 @@
         <div class="col-md-8">
             <form action="{{url('/admin/category/create')}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <div class="category_info">
+                    Eklediğiniz kategoriler onaylandıktan sonra sizin haricinizdeki kullanıcılar tarafından da
+                    gözükecektir.
+                </div>
                 <div class="card shadow mb-4">
                     <div>
                         <div class="card-body">
