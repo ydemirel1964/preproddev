@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\articleService;
 use App\Services\categoryService;
-
 use App\Models\articles;
-use App\Models\categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class searchController extends Controller
@@ -15,14 +15,17 @@ class searchController extends Controller
   {
     $searchTerm = $request->searchTerm;
     $categoryService = new categoryService();
-    $categories = $categoryService->getCategories();
+    $articleService = new articleService();
+    $sidebarCategories = $categoryService->getSidebarCategories();
+    $sidebarArticles = $articleService->getSidebarArticles();
 
     $searchResult = articles::where(function ($query) use ($searchTerm) {
       $query
         ->where('content_title', 'LIKE', '%' . $searchTerm . '%')
         ->orWhere('content', 'LIKE', '%' . $searchTerm . '%')
         ->orWhere('content_description', 'LIKE', '%' . $searchTerm . '%');
-    })->simplePaginate(10);
-    return view('searchresult', ['searchTerm' => "$searchTerm", 'searchresult' => $searchResult, 'categories' => $categories]);
+    })->paginate(3);
+
+    return view('searchresult', ['searchTerm' => "$searchTerm", 'searchResult' => $searchResult, 'sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles]);
   }
 }

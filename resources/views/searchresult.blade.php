@@ -1,56 +1,40 @@
 @extends('layouts.app')
 @section('head')
-<meta name="description" content="Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir." />
+<meta name="description"
+  content="Preprod-Dev programlama ve web teknolojileri öncelik olmak üzere farklı konularda yazılar içermektedir." />
 <meta name="keywords" content="preprod dev,preprod,dev,web tasarım, yazılım, software, yazılım geliştirme">
 <title>Arama Sonuç - Preprod Dev</title>
-<script type="text/javascript" src="{{ URL::asset('js/article.js') }}"></script>
-<link rel="stylesheet" href="{{ URL::asset('css/article.css') }}">
 @endsection
 @section('content')
-<div class="search-result">
-  <div class="w3-row">
-    <div class="w3-col l12 s12">
-      <!-- Blog entry -->
-      <div class="w3-center">
-        @if (count($searchresult) < 1) <h1>
-          <p><b>"{{ $searchTerm }}"</b> kelimesine ait herhangi bir sonuç bulunamamıştır.</p>
-          </h1>
-          @else
-          <h1>
-            <p><b>"{{ $searchTerm }}"</b> kelimesine ait arama sonuçları aşağıda listelenmiştir.</p>
-          </h1>
-          @endif
-      </div>
-      <hr>
-      @foreach ($searchresult as $article)
-      <div class="w3-margin">
-        <div class="w3-container">
-          <h2>
-            <div class="article-title"><b>{{$article->content_title}}</b></div>
-          </h2>
-          <div class="article-description">{{$article->content_description}}, {{$article->created_at}}</div>
-          <div class="article-writer"><a class="article-writer-link" href="/writerprofile/{{$article->user_id}}">{{$article->users->name}} </a></div>
-        </div>
-        <div class="w3-container">
-        
-          <div class="w3-row">
-            <div class="w3-col m8 s12">
-              <a class="article-content-link" href="{{url('/'.$article->slug)}}"> Yazının tamamı için tıklayınız. » </a>
+<div class="container">
+  <section class="blog-post-area section-margin mt-4">
+    <div class="row">
+      <div class="col-lg-8">
+        @foreach ($searchResult as $key => $article)
+        <div class="card">
+          <div class="card-header text-center">
+            <div class="text-left">
+              <div class="user-info-area">{{ $article->users->name }}
+                <p>{{ $article->created_at }}</p>
+              </div>
             </div>
-            <div class="w3-col m4 w3-hide-small w3-right">
-              <p><span class="w3-right">Yorumlar {{ $article->comments === NULL ? 0 : count($article->comments)}}</span></p>
-            </div>
+            <a href="{!! $article->slug !!}">
+              <h2> {{$article->content_title}}</h2>
+            </a>
+            <p class="content-description"> {!! $article->content_description !!}</p>
+          </div>
+          <div class="card-body">
+            <p class="card-text article-content"> {!! $article->content !!}</p>
+            <div class="text-right"><a class="button" href="{{ url('/' . $article->slug) }}">YAZININ
+                SAYFASINA GİT <i class="ti-arrow-right"></i></a></div>
           </div>
         </div>
+        @endforeach
+        {{ $searchResult->appends(request()->query())->links() }}
       </div>
-      <hr>
-      @endforeach
-      <!-- END BLOG ENTRIES -->
-      <div class="w3-right">
-        {{ $searchresult->links() }}
-      </div>
+      <!-- Start Blog Post Siddebar -->
+      @include('layouts.sidebar')
     </div>
-    <!-- END w3-content -->
-  </div>
+  </section>
 </div>
 @endsection
