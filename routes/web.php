@@ -4,13 +4,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\ProfileController as UserProfileController;
-use App\Http\Controllers\CategoryController;
+
 use App\Http\Controllers\WriterProfileController;
 use App\Http\Controllers\searchController;
 //use App\Http\Controllers\AboutMeController;

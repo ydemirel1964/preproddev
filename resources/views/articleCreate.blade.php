@@ -24,6 +24,10 @@
                 </ul>
             </div>
             @endif
+            <div class="category_info">
+                Eklediğiniz yazılar onaylandıktan sonra sizin haricinizdeki kullanıcılar tarafından da
+                gözükecektir.
+            </div>
             <form action="{{url('/profile/create-article')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card shadow mb-4">
@@ -40,7 +44,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Yazı İçeriği **</label>
-                                <textarea class="form-control" id="summernote" name="articlecontent" rows="10"></textarea>
+                                <textarea class="form-control" id="summernote" name="articlecontent"
+                                    rows="10"></textarea>
                             </div>
                             <div class="form-group">
                                 Kategori **
