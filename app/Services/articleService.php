@@ -7,13 +7,13 @@ class articleService
 {
     public function getAllArticles()
     {
-        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->paginate(3);
+        $articles = articles::with('users')->with('comments')->where('admin_confirmation',1)->orderBy('id', 'desc')->paginate(3);
         return $articles;
     }
 
     public function getSidebarArticles()
     {
-        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->limit(10)->get();
+        $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->where('admin_confirmation',1)->limit(10)->get();
         return $articles;
     }
 

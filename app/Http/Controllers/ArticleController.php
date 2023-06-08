@@ -29,7 +29,7 @@ class ArticleController extends Controller
     {
         if (Auth::check()) {
             try {
-                $categories = categories::get();
+                $categories = categories::where('admin_confirmation', 1)->orWhere('user_id', Auth::user()->id)->get();
                 return view('articleCreate', ['categories' => $categories]);
             } catch (Throwable $e) {
                 return $e;

@@ -15,12 +15,21 @@
 
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form action="{{url('/admin/category/create')}}" method="POST" enctype="multipart/form-data">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <div class="category_info">
+                Eklediğiniz kategoriler onaylandıktan sonra sizin haricinizdeki kullanıcılar tarafından da
+                gözükecektir.
+            </div>
+            <form action="{{url('profile/create-category')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="category_info">
-                    Eklediğiniz kategoriler onaylandıktan sonra sizin haricinizdeki kullanıcılar tarafından da
-                    gözükecektir.
-                </div>
                 <div class="card shadow mb-4">
                     <div>
                         <div class="card-body">

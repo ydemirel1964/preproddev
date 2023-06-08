@@ -7,6 +7,8 @@ use App\Services\categoryService;
 use App\Models\categories;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Throwable;
 
 class CategoryController extends Controller
@@ -51,8 +53,47 @@ class CategoryController extends Controller
     {
         if (Auth::check()) {
             try {
-                $categories = categories::get();
+                $categories = categories::
+                    where('admin_confirmation',1)->orWhere('user_id',Auth::user()->id)->get();
                 return view('categoryCreate', ['categories' => $categories]);
+            } catch (Throwable $e) {
+                return $e;
+            }
+        }
+    }
+
+
+    public function create(Request $request)
+    {
+        if (Auth::check()) {
+            try {
+                $validator = Validator::make($request->all(), [
+                    'category' => 'required|min:1|max:255',
+                    'description' => 'max:1000'
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect('/profile/create-category')
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+
+
+                $category = $request->category;
+                $description = $request->description;
+                $parentCategory = $request->parentCategory;
+                $userid = Auth::user()->id;
+                $slug = $userid . "-" . time();
+                categories::firstOrCreate(
+                    [
+                        'category' => $category,
+                        'slug' => $slug,
+                        'parent_id' => $parentCategory,
+                        'description' => $description,
+                        'user_id'=>$userid
+                    ]
+                );
+                return redirect('/profile');
             } catch (Throwable $e) {
                 return $e;
             }
