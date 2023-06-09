@@ -117,7 +117,7 @@ class ArticleController extends Controller
                     ]
                 );
             }
-            return redirect('/dashboard/articles');
+            return redirect('/admin/articles');
         }
     }
 }

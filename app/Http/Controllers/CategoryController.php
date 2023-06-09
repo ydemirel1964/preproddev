@@ -33,6 +33,7 @@ class CategoryController extends Controller
                 ->join('users', 'users.id', '=', 'articles.user_id')
                 ->select('articles.user_id', 'articles.id', 'users.name', 'categories.category', 'articles.slug', 'articles.content_title', 'articles.content_description', 'articles.created_at', 'categories.metatags')
                 ->where('categories.id', $category_id)
+                ->where('articles.admin_confirmation',1)
                 ->orWhere('categories.parent_id', $category_id)
                 ->orderBy('articles.rank', 'ASC')
                 ->get();

@@ -37,7 +37,7 @@ class CategoryController extends Controller
                         'description' => $description
                     ]
                 );
-                return redirect('/dashboard/categories');
+                return redirect('/admin/categories');
             }catch (Throwable $e) {
                 return $e;
             }
@@ -45,7 +45,7 @@ class CategoryController extends Controller
     }
     public function delete($id){
         $categories=categories::where('id',$id)->delete();
-        return redirect('/dashboard/categories');
+        return redirect('/admin/categories');
     }
     public function update($categoryid,request $request){
         if($request->has('_token')){
@@ -61,6 +61,6 @@ class CategoryController extends Controller
             $category = categories::where('id',$categoryid)->get();
             return view('admin/categoryUpdate', ['category'=>$category,'categories'=>$categories]);
         }
-        return redirect('/dashboard/categories');
+        return redirect('/admin/categories');
     }
 }

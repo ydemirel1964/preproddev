@@ -23,7 +23,7 @@
                   <p>{{ $article->created_at }}</p></div>
               </div>
               <a href="{!! $article->slug !!}">
-                  <h2> {{$article->content_title}}</h2>
+                  <h1> {{$article->content_title}}</h1>
               </a>
               <p class="content-description"> {!! $article->content_description !!}</p>
           </div>

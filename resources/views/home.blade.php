@@ -7,6 +7,7 @@
 @endsection
 @section('content')
 <div class="container">
+    <h1 style="display: none;">Yazılım Dersleri</h1>
     <section class="blog-post-area section-margin mt-4">
         <div class="row">
             <div class="col-lg-8">

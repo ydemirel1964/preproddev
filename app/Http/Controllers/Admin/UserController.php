@@ -17,7 +17,7 @@ class UserController extends Controller
     public function delete($id)
     {
         User::where('id', $id)->delete();
-        return redirect('/dashboard/users');
+        return redirect('/admin/users');
     }
     public function update($userId, request $request)
     {
@@ -34,6 +34,6 @@ class UserController extends Controller
             $user = User::where('id', $userId)->get();
             return view('admin/userUpdate', ['user' => $user, 'users' => $users]);
         }
-        return redirect('/dashboard/users');
+        return redirect('/admin/users');
     }
 }
