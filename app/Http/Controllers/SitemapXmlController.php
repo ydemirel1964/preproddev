@@ -17,7 +17,7 @@ class SitemapXmlController extends Controller
         $categories = $categoryService->getCategories();
         
         $categories = json_decode(json_encode($categories), true);
-        $articles = articles::select('slug','updated_at')->get();
+        $articles = articles::select('slug','updated_at')->where('admin_confirmation',1)->get();
         return response()->view('sitemap', [
             'categories' => $categories,
             'articles' => $articles

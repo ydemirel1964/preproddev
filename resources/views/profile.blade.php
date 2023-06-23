@@ -9,48 +9,54 @@
 
 <div class="container profile_page_body">
   <div class="row">
-    <div class="col-md-4">
-      <div><a href="/profile/create-article" class="btn btn-secondary btn-block"> Yazı Ekle</a></div><br>
-      <div><a href="/profile/create-category" class="btn btn-secondary btn-block"> Kategori Ekle</a></div>
+    <div class="col-md-3 text-center">
+      <div><a href="/profile/create-article" class="button btn-block profile-action-button">Yeni Yazı Ekle</a></div>
+      <div><a href="/profile/create-category" class="button btn-block profile-action-button">Yeni Kategori Ekle</a>
+      </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9" style="border-left:black 0.1px solid">
       <div>
         @if(count($userArticles)>0)
-        <div class="profile_info">Yazılarınız </div>
         @else
-        <div class="profile_info">Herhangi yazınız bulunmamaktadır.</div>
+        <div class="profile_info">Herhangi bir yazınız bulunmamaktadır. Yeni içerikler ekleyerek bizlere katkıda
+          bulunabilirsiniz.</div>
         @endif
       </div>
-      <hr>
-      <!-- Blog entry -->
-      @foreach ($userArticles as $item)
-      <div>
-        <div class="w3-container">
-          <div class="article-title"><b><a href="{{url('/'.$item->slug)}}">
-                <h2>{{$item->content_title}}</h2>
-              </a>
-            </b></div>
-          <div class="article-description">{{$item->content_description}}, <div class="article-date">
-              {{$item->created_at}} </div>
+      @foreach ($userArticles as $article)
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <div class="text-left">
+                <div class="user-info-area">
+                  <p>{{ $article->created_at }}</p>
+                </div>
+              </div>
+              <div class="profile_content_title">
+                <a href="{!! $article->slug !!}">
+                  <h2> {{$article->content_title}}</h2>
+                </a>
+              </div>
+              <p class="content-description"> {!! $article->content_description !!}</p>
+
+            </div>
           </div>
         </div>
-        <div class="w3-container">
-          <div class="w3-row">
-            <div class="w3-col m8 s12">
-              <a class="article-content-link" href="{{url('/'.$item->slug)}}"> Yazının tamamı için tıklayınız. » </a>
-            </div>
-            <div class="w3-col m4 w3-hide-small w3-right">
-              <p><span class=" w3-right">Yorumlar {{ count($item->comments) }}</span></p>
-            </div>
+        <div class="col-md-3">
+          <div class="text-center profile-action-button">
+            <a class="button btn-block" href="{{ url('/' . $article->slug) }}">YAZIYI GÖSTER</a>
+          </div>
+          <div class="text-center profile-action-button">
+            <a class="button btn-block" href="{{ url('profile/update-article', ['id' => $article->id]) }}">GUNCELLE</a>
+          </div>
+          <div class="text-center profile-action-button">
+            <a class="button btn-block" href="{{ url('/profile/article/delete', ['id'=>$article->id]) }}">SIL</a>
           </div>
         </div>
       </div>
-      <hr>
       @endforeach
-      <!-- END BLOG ENTRIES -->
       <div>{{ $userArticles->links() }}</div>
     </div>
   </div>
 </div>
-
-  @endsection
+@endsection

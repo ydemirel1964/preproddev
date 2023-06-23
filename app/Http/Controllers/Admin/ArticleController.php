@@ -49,7 +49,8 @@ class ArticleController extends Controller
                         'content' => "$content",
                         'slug' => "$slug",
                         'metatags' => "$metatags",
-                        'user_id' => $userid
+                        'user_id' => $userid,
+                        'admin_confirmation' => 1
                     ]
                 );
                 foreach ($contentcategory as $category) {
@@ -106,7 +107,8 @@ class ArticleController extends Controller
                 'slug' => "$slug",
                 'metatags' => "$metatags",
                 'content' => "$content",
-                'content_description' => "$articlecontentdescription"
+                'content_description' => "$articlecontentdescription",
+                'admin_confirmation' => 1
             ]);
             article_categories::whereNotIn('category_id', $contentcategory)->where('article_id', $articleid)->delete();
             foreach ($contentcategory as $category) {

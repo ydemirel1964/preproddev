@@ -59,15 +59,8 @@
             
                                     Kategori
                                     <select name="categories[]" class="form-control" multiple="multiple">
-                                        @if(count($categories)>0)
-                                            @foreach($categories as $category)
-                                                @if(array_search($category->id,$selectedCategoriesId) !== false)
-                                                <option value="{{$category->id}}" selected>{{$category->category}}</option>
-                                                @else
-                                                <option value="{{$category->id}}">{{$category->category}}</option>
-                                                @endif
-                                            @endforeach
-                                        @endif
+                                       
+                                        
                                     </select>
                                 </div>
                             <button type="submit" class="btn btn-primary">Güncelle</button>

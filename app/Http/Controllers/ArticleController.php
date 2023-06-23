@@ -42,7 +42,7 @@ class ArticleController extends Controller
         if (Auth::check()) {
             try {
                 $validator = Validator::make($request->all(), [
-                    'articlecontenttitle' => 'required|min:30|max:255',
+                    'articlecontenttitle' => 'required|min:10|max:255',
                     'articlecontentdescription' => 'max:500',
                     'articlecontent' => 'required|max:10000|min:300',
                     'categories' => 'required|array|min:1'
@@ -58,7 +58,6 @@ class ArticleController extends Controller
                 $contenttitle = $request->articlecontenttitle;
                 $contentdescription = $request->articlecontentdescription;
                 $content = $request->articlecontent;
-                $userid = Auth::user()->id;
                 $slug = $userid . "-" . time();
                 $contentcategory = $request->categories;
                 $articlecreate = articles::firstOrCreate(
@@ -88,62 +87,96 @@ class ArticleController extends Controller
     public function delete($id)
     {
         // FIXME: Bu alan ileriki aşamada kullanıcıların yazılarını silmesi için kullanılıcaktır.
+
+        $userId = Auth::user()->id;
+        $articleUserId = articles::select('user_id')->where('id', $id)->first();
+        if ($userId !== $articleUserId['user_id']) {
+            return redirect('/profile');
+        }
+
         $articles = articles::where('id', $id)->get();
         if (count($articles) > 0) {
-            $articlecommentsdelete = comments::where('article_id', $id)->delete();
-            $articlecategorydelete = article_categories::where('article_id', $id)->delete();
-            $articledelete = articles::where('id', $id)->delete();
+            comments::where('article_id', $id)->delete();
+            article_categories::where('article_id', $id)->delete();
+            articles::where('id', $id)->delete();
         }
         return redirect('/profile');
     }
 
     public function update($articleid, request $request)
     {
+        if (Auth::check()) {
+            try {
 
-        // FIXME: Bu alan kullanıcıların yazılarını güncellemsi içib kullanılıcaktır.
+                if ($request->has('_token')) {
 
-        if ($request->has('_token')) {
-            $id = Auth::user()->id;
-            $articlecontenttitle = $request->articlecontenttitle;
-            $articlecontentdescription = $request->articlecontentdescription;
-            $content = $request->articlecontent;
-            $dom = new \DomDocument();
-            $dom->loadHtml(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $imageFile = $dom->getElementsByTagName('img');
-            foreach ($imageFile as $item => $image) {
-                $data = $image->getAttribute('src');
-                list($type, $data) = explode(';', $data);
-                list(, $data) = explode(',', $data);
-                $imgeData = base64_decode($data);
-                $image_name = "/upload/" . time() . $item . '.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
-                $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
-                $image->setAttribute('alt', $articlecontenttitle);
+                    $validator = Validator::make($request->all(), [
+                        'articlecontenttitle' => 'required|min:10|max:255',
+                        'articlecontentdescription' => 'max:500',
+                        'articlecontent' => 'required|max:10000|min:300',
+                        'categories' => 'required|array|min:1'
+                    ]);
+
+                    if ($validator->fails()) {
+                        return redirect('/profile/update-article/' . $request->id)
+                            ->withErrors($validator)
+                            ->withInput();
+                    }
+
+                    $id = Auth::user()->id;
+                    $articleUserId = articles::select('user_id')->where('id', $articleid)->first();
+                    if ($id !== $articleUserId['user_id']) {
+                        return redirect('/profile');
+                    }
+
+                    $articleid = $request->id;
+                    $articlecontenttitle = $request->articlecontenttitle;
+                    $articlecontentdescription = $request->articlecontentdescription;
+                    $slug =$id  . "-" . time();
+                    $metatags = $request->metatags;
+                    $content = $request->articlecontent;
+                    $contentcategory = $request->categories;
+                    $articlesupdate = articles::where([['user_id', "$id"], ['id', "$articleid"]])->update([
+                        'content_title' => "$articlecontenttitle",
+                        'slug' => "$slug",
+                        'metatags' => "$metatags",
+                        'content' => "$content",
+                        'content_description' => "$articlecontentdescription"
+                    ]);
+                    article_categories::whereNotIn('category_id', $contentcategory)->where('article_id', $articleid)->delete();
+                    foreach ($contentcategory as $category) {
+                        $categorycreate = article_categories::firstOrCreate(
+                            [
+                                'article_id' => $articleid,
+                                'category_id' => $category
+                            ]
+                        );
+                    }
+                    return redirect('/profile');
+                } else {
+                    $id = Auth::user()->id;
+                    $articleUserId = articles::select('user_id')->where('id', $articleid)->first();
+                    if ($id !== $articleUserId['user_id']) {
+                        return redirect('/profile');
+                    }
+                    $selectedCategoriesId = array();
+
+
+                    $articleid = $request->id;
+                    $articles = articles::where([['user_id', "$id"], ['id', "$articleid"]])->limit(1)->get();
+                    $selectedCategories = article_categories::where('article_id', $articleid)->get();
+                    foreach ($selectedCategories as $value) {
+                        $selectedCategoriesId[] = $value['category_id'];
+                    }
+                    $categories = categories::get();
+                    return view('articleUpdate', ['article' => $articles, 'categories' => $categories, 'selectedCategoriesId' => $selectedCategoriesId]);
+                }
+            } catch (Throwable $e) {
+                return $e;
             }
-            $articlecontent = $dom->saveHTML();
-            $contentcategory = $request->categories;
-            $articlesupdate = articles::where([['user_id', "$id"], ['id', "$articleid"]])->update(array('content_title' => "$articlecontenttitle", 'content' => "$articlecontent", 'content_description' => "$articlecontentdescription"));
-            foreach ($contentcategory as $category) {
-                $categorycreate = article_categories::firstOrCreate(
-                    [
-                        'article_id' => $articleid,
-                        'category_id' => $category
-                    ]
-                );
-            }
-            return redirect('/profile');
+
         } else {
-            $selectedCategoriesId = array();
-            $id = Auth::user()->id;
-            $articles = articles::where([['user_id', "$id"], ['id', "$articleid"]])->limit(1)->get();
-            $selectedCategories = article_categories::where('article_id', $articleid)->get();
-            foreach ($selectedCategories as $value) {
-                $selectedCategoriesId[] = $value['category_id'];
-            }
-            $categories = categories::get();
-            return view('admin/articleupdate', ['articles' => $articles, 'categories' => $categories, 'selectedCategoriesId' => $selectedCategoriesId]);
+            return redirect('login');
         }
     }
 }

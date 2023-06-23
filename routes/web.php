@@ -1,7 +1,9 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
+//use App\Http\Controllers\ChatGptController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
@@ -91,13 +93,16 @@ Route::group(['middleware' => ['urlControl']], function () {
     Route::get('/profile', [UserProfileController::class, 'index'])->middleware("auth")->name('userProfile');
     Route::get('/profile/create-article', [ArticleController::class, 'createForm'])->middleware("auth");
     Route::post('/profile/create-article', [ArticleController::class, 'create'])->middleware("auth");
+    Route::get('/profile/update-article/{id}', [ArticleController::class, 'update'])->middleware("auth");
+    Route::get('/profile/article/delete/{id}', [ArticleController::class, 'delete'])->middleware('auth');
 
     Route::get('/profile/create-category', [CategoryController::class, 'createForm'])->middleware("auth");
     Route::post('/profile/create-category', [CategoryController::class, 'create'])->middleware("auth");
 
     Route::post('/checkUnseenMessage', [MessageController::class, 'checkUnseenMessage']);
-
+    //Route::get("/chatgpt", [ChatGptController::class, 'index']);
     Route::get('/{slug}', [ArticleController::class, 'index']);
+
 });
 
 
