@@ -58,6 +58,7 @@ class ArticleController extends Controller
                 $contenttitle = $request->articlecontenttitle;
                 $contentdescription = $request->articlecontentdescription;
                 $content = $request->articlecontent;
+                $userid = Auth::user()->id;
                 $slug = $userid . "-" . time();
                 $contentcategory = $request->categories;
                 $articlecreate = articles::firstOrCreate(
@@ -87,18 +88,11 @@ class ArticleController extends Controller
     public function delete($id)
     {
         // FIXME: Bu alan ileriki aşamada kullanıcıların yazılarını silmesi için kullanılıcaktır.
-
-        $userId = Auth::user()->id;
-        $articleUserId = articles::select('user_id')->where('id', $id)->first();
-        if ($userId !== $articleUserId['user_id']) {
-            return redirect('/profile');
-        }
-
         $articles = articles::where('id', $id)->get();
         if (count($articles) > 0) {
-            comments::where('article_id', $id)->delete();
-            article_categories::where('article_id', $id)->delete();
-            articles::where('id', $id)->delete();
+            $articlecommentsdelete = comments::where('article_id', $id)->delete();
+            $articlecategorydelete = article_categories::where('article_id', $id)->delete();
+            $articledelete = articles::where('id', $id)->delete();
         }
         return redirect('/profile');
     }
@@ -126,13 +120,12 @@ class ArticleController extends Controller
                     $id = Auth::user()->id;
                     $articleUserId = articles::select('user_id')->where('id', $articleid)->first();
                     if ($id !== $articleUserId['user_id']) {
-                        return redirect('/profile');
+                        throw new \Exception("UserId Hatası", 1);
                     }
-
                     $articleid = $request->id;
                     $articlecontenttitle = $request->articlecontenttitle;
                     $articlecontentdescription = $request->articlecontentdescription;
-                    $slug =$id  . "-" . time();
+                    $slug = $request->articleslug;
                     $metatags = $request->metatags;
                     $content = $request->articlecontent;
                     $contentcategory = $request->categories;
@@ -141,7 +134,8 @@ class ArticleController extends Controller
                         'slug' => "$slug",
                         'metatags' => "$metatags",
                         'content' => "$content",
-                        'content_description' => "$articlecontentdescription"
+                        'content_description' => "$articlecontentdescription",
+                        'admin_confirmation' => 1
                     ]);
                     article_categories::whereNotIn('category_id', $contentcategory)->where('article_id', $articleid)->delete();
                     foreach ($contentcategory as $category) {
@@ -157,7 +151,7 @@ class ArticleController extends Controller
                     $id = Auth::user()->id;
                     $articleUserId = articles::select('user_id')->where('id', $articleid)->first();
                     if ($id !== $articleUserId['user_id']) {
-                        return redirect('/profile');
+                      return redirect('/profile');
                     }
                     $selectedCategoriesId = array();
 
