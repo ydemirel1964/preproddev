@@ -17,6 +17,11 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="card">
+          @if($article->admin_confirmation == 0)
+          <div class="confirmation_info">
+            İlgili yazı admin tarafından onaylanmadığı için henüz sayfaya eklenmemiştir. Onaylanması durumunda ilgili yazı anasayfa ve kategorilerde gözükecektir.
+          </div>
+          @endif
           <div class="card-header text-center">
               <div class="text-left">
                   <div class="user-info-area">{{ $article->users->name }}

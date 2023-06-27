@@ -747,3 +747,13 @@ header {
 .profile-action-button {
   margin-top: 3px;
 }
+
+.confirmation_info {
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+  padding: 10px;
+}
