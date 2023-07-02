@@ -87,7 +87,8 @@ class ArticleController extends Controller
         foreach ($selectedCategories as $value) {
             $selectedCategoriesId[] = $value['category_id'];
         }
-        $categories = categories::get();
+        $categories = categories::where('admin_confirmation',1)->orWhere('user_id',$id)->get();
+        info($categories);
         return view('admin/articleupdate', ['articles' => $articles, 'categories' => $categories, 'selectedCategoriesId' => $selectedCategoriesId]);
     }
 
