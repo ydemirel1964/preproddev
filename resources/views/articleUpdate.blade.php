@@ -47,8 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Yazı İçeriği **</label>
-                                <textarea class="form-control" id="summernote" name="articlecontent"
-                                    value="{!! $item->content !!}" rows="10"></textarea>
+                                <textarea class="form-control" id="summernote" name="articlecontent">{!! $item->content !!}</textarea>
                             </div>
                             <div class="form-group">
                                 Kategori **
@@ -77,7 +76,7 @@
             $('#summernote').summernote({
                 placeholder: 'Hello stand alone ui',
                 tabsize: 2,
-                height: 120,
+                height: 250,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear']],

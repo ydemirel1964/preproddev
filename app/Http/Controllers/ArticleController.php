@@ -125,14 +125,10 @@ class ArticleController extends Controller
                     $articleid = $request->id;
                     $articlecontenttitle = $request->articlecontenttitle;
                     $articlecontentdescription = $request->articlecontentdescription;
-                    $slug = $request->articleslug;
-                    $metatags = $request->metatags;
                     $content = $request->articlecontent;
                     $contentcategory = $request->categories;
                     $articlesupdate = articles::where([['user_id', "$id"], ['id', "$articleid"]])->update([
                         'content_title' => "$articlecontenttitle",
-                        'slug' => "$slug",
-                        'metatags' => "$metatags",
                         'content' => "$content",
                         'content_description' => "$articlecontentdescription",
                         'admin_confirmation' => 1
@@ -163,6 +159,7 @@ class ArticleController extends Controller
                         $selectedCategoriesId[] = $value['category_id'];
                     }
                     $categories = categories::get();
+                    info($articles);
                     return view('articleUpdate', ['article' => $articles, 'categories' => $categories, 'selectedCategoriesId' => $selectedCategoriesId]);
                 }
             } catch (Throwable $e) {
