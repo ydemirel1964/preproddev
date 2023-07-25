@@ -11,6 +11,9 @@
 @section('content')
 <!--================ Start Blog Post Area =================-->
 <section class="blog-post-area section-margin mt-4">
+  @if(isset($articles[0]))
+  <p style="display: none;">{{ $articles[0]->content_title}} - Preprod Dev</p>
+  @endif
   <div class="container">
     @if (count($articles)>0)
     @foreach ($articles as $key=>$article)
@@ -19,23 +22,25 @@
         <div class="card">
           @if($article->admin_confirmation == 0)
           <div class="confirmation_info">
-            İlgili yazı admin tarafından onaylanmadığı için henüz sayfaya eklenmemiştir. Onaylanması durumunda ilgili yazı anasayfa ve kategorilerde gözükecektir.
+            İlgili yazı admin tarafından onaylanmadığı için henüz sayfaya eklenmemiştir. Onaylanması durumunda ilgili
+            yazı anasayfa ve kategorilerde gözükecektir.
           </div>
           @endif
           <div class="card-header text-center">
-              <div class="text-left">
-                  <div class="user-info-area">{{ $article->users->name }}
-                  <p>{{ $article->created_at }}</p></div>
+            <div class="text-left">
+              <div class="user-info-area">{{ $article->users->name }}
+                <p>{{ $article->created_at }}</p>
               </div>
-              <a href="{!! $article->slug !!}">
-                  <h1> {{$article->content_title}}</h1>
-              </a>
-              <p class="content-description"> {!! $article->content_description !!}</p>
+            </div>
+            <a href="{!! $article->slug !!}">
+              <h1> {{$article->content_title}}</h1>
+            </a>
+            <p class="content-description"> {!! $article->content_description !!}</p>
           </div>
           <div class="card-body">
-              <p class="card-text article-content"> {!! $article->content !!}</p>
+            <p class="card-text article-content"> {!! $article->content !!}</p>
           </div>
-      </div>
+        </div>
       </div>
       @include('layouts.sidebar')
     </div>

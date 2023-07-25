@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Throwable;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {
@@ -42,6 +43,7 @@ class CategoryController extends Controller
                         'admin_confirmation' => 1
                     ]
                 );
+                cache::forget('getSidebarCategories');
                 return redirect('/admin/categories');
             } catch (Throwable $e) {
                 return $e;
@@ -51,6 +53,7 @@ class CategoryController extends Controller
     public function delete($id)
     {
         $categories = categories::where('id', $id)->delete();
+        cache::forget('getSidebarCategories');
         return redirect('/admin/categories');
     }
     public function update($categoryid, request $request)
@@ -61,7 +64,8 @@ class CategoryController extends Controller
             $metatags = $request->metatags;
             $description = $request->description;
             $parentCategory = $request->parentCategory;
-            $categoryupdate = categories::where('id', "$categoryid")->update(array('category' => "$category", 'slug' => "$slug", 'parent_id' => $parentCategory, 'description' => $description, 'metatags' => $metatags));
+            categories::where('id', "$categoryid")->update(array('category' => "$category", 'slug' => "$slug", 'parent_id' => $parentCategory, 'description' => $description, 'metatags' => $metatags, 'admin_confirmation' => 1));
+            cache::forget('getSidebarCategories');
         } else {
             $categories = categories::get();
             $category = categories::where('id', $categoryid)->get();

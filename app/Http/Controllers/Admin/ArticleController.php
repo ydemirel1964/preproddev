@@ -8,6 +8,7 @@ use App\Models\article_categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Throwable;
 
 class ArticleController extends Controller
@@ -61,6 +62,8 @@ class ArticleController extends Controller
                         ]
                     );
                 }
+                Cache::flush();
+
                 return redirect('/admin/articles');
             } catch (Throwable $e) {
                 return $e;
@@ -75,6 +78,8 @@ class ArticleController extends Controller
             $articlecategorydelete = article_categories::where('article_id', $id)->delete();
             $articledelete = articles::where('id', $id)->delete();
         }
+
+        cache::flush();
         return redirect('/admin/articles');
     }
     public function updateform(request $request)
@@ -87,8 +92,7 @@ class ArticleController extends Controller
         foreach ($selectedCategories as $value) {
             $selectedCategoriesId[] = $value['category_id'];
         }
-        $categories = categories::where('admin_confirmation',1)->orWhere('user_id',$id)->get();
-        info($categories);
+        $categories = categories::where('admin_confirmation', 1)->orWhere('user_id', $id)->get();
         return view('admin/articleupdate', ['articles' => $articles, 'categories' => $categories, 'selectedCategoriesId' => $selectedCategoriesId]);
     }
 
@@ -120,6 +124,7 @@ class ArticleController extends Controller
                     ]
                 );
             }
+            cache::flush();
             return redirect('/admin/articles');
         }
     }

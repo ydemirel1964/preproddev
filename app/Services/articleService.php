@@ -21,7 +21,7 @@ class articleService
     public function getSidebarArticles()
     {
         if (Cache::has('getSidebarArticles') !== true) {
-            $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->where('admin_confirmation', 1)->limit(8)->get();
+            $articles = articles::with('users')->with('comments')->orderBy('id', 'desc')->where('admin_confirmation', 1)->limit(20)->get();
             Cache::add('getSidebarArticles', $articles);
         } else {
             $articles = Cache::get('getSidebarArticles');

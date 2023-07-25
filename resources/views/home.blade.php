@@ -7,6 +7,7 @@
 @endsection
 @section('content')
 <div class="container">
+    <p style="display: none;">Anasayfa - Preprod Dev</p>
     <h1 style="display: none;">Programlama ve Web teknolojileri hakkında bilgiler içermektedir.</h1>
     <section class="blog-post-area section-margin mt-4">
         <div class="row">
@@ -33,7 +34,7 @@
 
                 <p style="display: none;">  {{$article->content_title}} </p>
                 @endforeach
-                <h2 style="display: none;">Programlama ve Web teknolojileri hakkında bilgiler içermektedir.</h2>
+                <p style="display: none;">Programlama ve Web teknolojileri hakkında bilgiler içermektedir.</p>
                 {{ $articles->links() }}
             </div>
             <!-- Start Blog Post Siddebar -->
