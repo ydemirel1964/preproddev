@@ -25,7 +25,7 @@ class ArticleController extends Controller
         return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles]);
     }
 
-    public function createForm(request $request)
+    public function createForm()
     {
         if (Auth::check()) {
             try {
@@ -144,10 +144,10 @@ class ArticleController extends Controller
                     }
                     return redirect('/profile');
                 } else {
-                    $id = Auth::user()->id;
+                    $id = trim(Auth::user()->id);
                     $articleUserId = articles::select('user_id')->where('id', $articleid)->first();
-                    if ($id !== $articleUserId['user_id']) {
-                      return redirect('/profile');
+                    if ($id != $articleUserId['user_id']) {
+                        return redirect('/profile');
                     }
                     $selectedCategoriesId = array();
 

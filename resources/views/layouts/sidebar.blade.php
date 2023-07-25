@@ -34,7 +34,7 @@
                     </div>
                     <div class="details mt-20">
                         <a href="{{ url('', ['id' => $sidebarArticle->slug]) }}">
-                            <h3 class="sidebar-h3-title">{{ $sidebarArticle->content_title }}</h3>
+                            <p class="sidebar-h3-title">{{ $sidebarArticle->content_title }}</p>
                         </a>
                     </div>
                 </div>

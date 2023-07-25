@@ -11,6 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="icon" type="image/png" href="{{ asset('img/preproddev.webp') }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/preproddev.webp') }}">
+    <link rel="apple-touch-icon" type="image/png" href="{{ asset('img/preproddev.webp') }}">
     <!--  Adsense Etiketi -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9579347278267224"
         crossorigin="anonymous"></script><!-- Google tag (gtag.js) -->
@@ -25,7 +26,6 @@
         gtag('js', new Date());
         gtag('config', 'G-6HPCJ8LJ9C');
     </script>
-    <meta name="generator" content="All in One SEO (AIOSEO) 4.2.4 " />
     @yield('head')
 </head>
 
@@ -85,7 +85,7 @@
             <div class="row">
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
-                        <h6>Hakkımızda</h6>
+                        <p>Hakkımızda</p>
                         <p>
                             Preprod-Dev<br><br> Programlama ve web teknolojileri öncelik olmak üzere farklı konularda
                             yazılar içermektedir.
@@ -95,7 +95,7 @@
                 <div class="col-lg-7  col-md-6 col-sm-6"></div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
-                        <h6>Bizi Takip Et</h6>
+                        <p>Bizi Takip Et</p>
                         <div class="footer-social d-flex align-items-center">
                             <a href="https://www.facebook.com/people/Preprod-Dev/100089444574092/">
                                 <i class="fab fa-facebook-f"></i>
@@ -120,7 +120,6 @@
             </div>
         </div>
     </footer>
-    <script src="{{ URL::asset('vendors/main.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
 </body>
 
