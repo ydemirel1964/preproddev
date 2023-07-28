@@ -7,6 +7,7 @@
 <meta name="keywords" content='{{ $articles[0]->metatags}}'>
 @endif
 @endif
+<script src="{{ URL::asset('js/article.js') }}"></script>
 @endsection
 @section('content')
 <!--================ Start Blog Post Area =================-->
@@ -40,6 +41,39 @@
           <div class="card-body">
             <p class="card-text article-content"> {!! $article->content !!}</p>
           </div>
+          <div class="commentSection">
+            <textarea class="form-control" id="comment" maxlength="255" name="article-comment" rows="3"></textarea>
+            <button onclick="sendComment()" class="btn" id="article-comment-button"
+              style="float: right; margin-top: 20px;" type="button">
+              Yorum Yaz
+            </button>
+            <br><br>
+            <p id="article_id" style="display: none;">{{$articles[0]->id}}</p>
+            <p id="slug" style="display: none;">{{$article->slug}}</p>
+            <p style="color: red;" id="comment_response"></p>
+
+            <div id="comments">
+              @foreach($comments as $comment)
+              <div class="card comment-card p-3" id="{{ $comment->commentId }}">
+                <div class="justify-content-between align-items-center">
+                  <div class="user align-items-center">
+                    <span>
+                      <small class="font-weight-bold text-primary">{{$comment->name}}</small> --
+                      <small style="text-align: right; ">{{ $comment->created_at }}</small><br>
+                      <small class="font-weight-bold">{{ $comment->comment }}</small>
+                    </span>
+                  </div>
+
+                </div>
+                <div style="text-align: right;">
+                  @if(isset(auth()->user()->id) && $comment->userId == auth()->user()->id )
+                  <small onclick="deleteComment({{ $comment->commentId }})">Yorumu Sil</small>
+                  @endif
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
         </div>
       </div>
       @include('layouts.sidebar')
@@ -50,19 +84,14 @@
   @else()
   <div class="row">
     <div class="col-lg-8">
-
       <div class="error">
         İlgili Sayfa Bulunamamıştır.
       </div>
-
     </div>
     @include('layouts.sidebar')
   </div>
   </div>
-
   @endif
-
   </div>
 </section>
-
 @endsection

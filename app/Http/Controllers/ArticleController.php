@@ -20,9 +20,11 @@ class ArticleController extends Controller
         $categoryService = new categoryService();
         $articleService = new articleService();
         $articles = $articleService->getArticle($slug);
+        $articleComments = $articleService->getArticleComments($slug);
+        info($articleComments);
         $sidebarArticles = $articleService->getSidebarArticles();
         $sidebarCategories = $categoryService->getSidebarCategories();
-        return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles]);
+        return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles, 'comments' => $articleComments]);
     }
 
     public function createForm()
