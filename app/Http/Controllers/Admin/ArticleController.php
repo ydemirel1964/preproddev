@@ -56,6 +56,8 @@ class ArticleController extends Controller
                         'rank' => $rank
                     ]
                 );
+
+                info($articlecreate);
                 foreach ($contentcategory as $category) {
                     $categorycreate = article_categories::firstOrCreate(
                         [
