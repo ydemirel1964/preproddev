@@ -7,6 +7,64 @@
 <meta name="keywords" content='{{ $articles[0]->metatags}}'>
 @endif
 @endif
+<style>
+  .box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 35px;
+    text-align: center;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding: 20px;
+    background: #fff;
+    position: relative;
+    transition: all 5s ease-in-out;
+  }
+
+  .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .popup .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+
+  @media screen and (max-width: 700px) {
+    .box {
+      width: 70%;
+    }
+
+    .popup {
+      width: 70%;
+    }
+  }
+</style>
 <script src="{{ URL::asset('js/article.js') }}"></script>
 @endsection
 @section('content')
@@ -16,6 +74,8 @@
   <p style="display: none;">{{ $articles[0]->content_title}} - Preprod Dev</p>
   @endif
   <div class="container">
+
+
     @if (count($articles)>0)
     @foreach ($articles as $key=>$article)
     <div class="row">
@@ -73,6 +133,7 @@
               </div>
               @endforeach
             </div>
+
           </div>
         </div>
       </div>
@@ -93,5 +154,15 @@
   </div>
   @endif
   </div>
+
 </section>
+<div id="popup1" class="overlay" style="visibility: hidden;">
+  <div class="popup">
+    <h2>PreprodDev</h2>
+    <a class="close" href="#" onclick="closePopup()">&times;</a>
+    <div class="content">
+      Yorumunuzun eklenmesi için üye olmanız gerekmektedir.
+    </div>
+  </div>
+</div>
 @endsection

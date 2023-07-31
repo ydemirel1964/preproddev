@@ -33,7 +33,10 @@
                             <label>Metatags</label>
                             <input value="{{$item->metatags}}" class="form-control" name="metatags">
                         </div>
-
+                        <div class="form-group">
+                            <label>Öncelik</label>
+                            <input value="{{$item->rank}}" class="form-control" name="rank">
+                        </div>
                         <div class="form-group">
                             <label>Yazı İçeriği</label>
                             <textarea class="form-control" id="summernote" name="articlecontent" rows="18">

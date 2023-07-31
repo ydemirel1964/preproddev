@@ -42,6 +42,7 @@ class ArticleController extends Controller
 
                 $contentdescription = $request->articlecontentdescription;
                 $contentcategory = $request->categories;
+                $rank = $request->rank;
                 $userid = Auth::user()->id;
                 $articlecreate = articles::firstOrCreate(
                     [
@@ -51,7 +52,8 @@ class ArticleController extends Controller
                         'slug' => "$slug",
                         'metatags' => "$metatags",
                         'user_id' => $userid,
-                        'admin_confirmation' => 1
+                        'admin_confirmation' => 1,
+                        'rank' => $rank
                     ]
                 );
                 foreach ($contentcategory as $category) {
@@ -107,13 +109,15 @@ class ArticleController extends Controller
             $metatags = $request->metatags;
             $content = $request->articlecontent;
             $contentcategory = $request->categories;
+            $rank = $request->rank;
             $articlesupdate = articles::where([['user_id', "$id"], ['id', "$articleid"]])->update([
                 'content_title' => "$articlecontenttitle",
                 'slug' => "$slug",
                 'metatags' => "$metatags",
                 'content' => "$content",
                 'content_description' => "$articlecontentdescription",
-                'admin_confirmation' => 1
+                'admin_confirmation' => 1,
+                'rank' => $rank
             ]);
             article_categories::whereNotIn('category_id', $contentcategory)->where('article_id', $articleid)->delete();
             foreach ($contentcategory as $category) {

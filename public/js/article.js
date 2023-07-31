@@ -4,9 +4,9 @@ function sendComment() {
     var articlecomment = document.getElementById('comment').value;
     var slug = document.getElementById('slug').innerHTML;
     xhttp.onload = function () {
-      var res = JSON.parse(this.response);
-      if (res.status == "success") {
-        var html = `<div class="card comment-card p-3" id="` + res.data['id'] + `">
+        var res = JSON.parse(this.response);
+        if (res.status == "success") {
+            var html = `<div class="card comment-card p-3" id="` + res.data['id'] + `">
                 <div class="justify-content-between align-items-center">
                   <div class="user align-items-center">
                     <span>
@@ -22,25 +22,33 @@ function sendComment() {
                   <small onclick="deleteComment(`+ res.data['id'] + `)">Yorumu Sil</small>
                 </div>
               </div>`;
-        document.getElementById('comments').insertAdjacentHTML("beforeend", html);
-      }
-      else {
-        alert("Yorumunuzun eklenmesi için üye olmanız gerekmektedir.");
-      }
+            document.getElementById('comments').insertAdjacentHTML("beforeend", html);
+        }
+        else {
+            document.getElementById('popup1').style.visibility = "visible";
+            document.getElementById('popup1').style.opacity = 1;
+        }
     }
     xhttp.open("GET", "comment/create?articleid=" + articleId + "&articlecomment=" + articlecomment + "&slug=" + slug + "", true);
     xhttp.send();
-  }
-  function deleteComment(commentId) {
+}
+
+function closePopup() {
+    document.getElementById('popup1').style.visibility = "hidden";
+    document.getElementById('popup1').style.opacity = 0;
+}
+
+
+function deleteComment(commentId) {
     const xhttp = new XMLHttpRequest();
     var articleId = document.getElementById("article_id").innerHTML;
     var slug = document.getElementById('slug').innerHTML;
     xhttp.onload = function () {
-      if (this.responseText == "success") {
-        var element = document.getElementById(String(commentId));
-        element.remove();
-      }
+        if (this.responseText == "success") {
+            var element = document.getElementById(String(commentId));
+            element.remove();
+        }
     }
     xhttp.open("GET", "comment/delete?articleId=" + articleId + "&commentId=" + commentId + "&slug=" + slug + "", true);
     xhttp.send();
-  }
+}
