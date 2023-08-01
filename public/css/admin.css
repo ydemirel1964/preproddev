@@ -1,0 +1,30 @@
+.admin-welcome {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .logo {
+    background-color: black;
+    text-align: right;
+    padding: 10px;
+    padding-right: 30px;
+  }
+
+  .logo a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .admin-side-menu ul {
+    list-style-type: none;
+  }
+
+  .admin-side-menu li {
+    padding: 5px;
+  }
+
+  .admin-side-menu li a {
+    color: black;
+    text-decoration: none;
+  }
