@@ -22,7 +22,6 @@ class searchController extends Controller
     $searchResult = articles::where(function ($query) use ($searchTerm) {
       $query
         ->where('content_title', 'LIKE', '%' . $searchTerm . '%')
-        ->orWhere('content', 'LIKE', '%' . $searchTerm . '%')
         ->orWhere('content_description', 'LIKE', '%' . $searchTerm . '%');
     })->paginate(3);
 
