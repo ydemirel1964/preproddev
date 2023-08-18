@@ -7,7 +7,8 @@
 @endsection
 @section('content')
 <div class="container">
-    <h1 style="display: none;">Yazılım Dersleri</h1>
+    <p style="display: none;">Anasayfa - Preprod Dev</p>
+    <h1 style="display: none;">Programlama ve Web teknolojileri hakkında bilgiler içermektedir.</h1>
     <section class="blog-post-area section-margin mt-4">
         <div class="row">
             <div class="col-lg-8">
@@ -16,7 +17,8 @@
                     <div class="card-header text-center">
                         <div class="text-left">
                             <div class="user-info-area">{{ $article->users->name }}
-                            <p>{{ $article->created_at }}</p></div>
+                                <p>{{ $article->created_at }}</p>
+                            </div>
                         </div>
                         <a href="{!! $article->slug !!}">
                             <h2> {{$article->content_title}} </h2>
@@ -29,7 +31,10 @@
                                 SAYFASINA GİT <i class="ti-arrow-right"></i></a></div>
                     </div>
                 </div>
+
+                <p style="display: none;">  {{$article->content_title}} </p>
                 @endforeach
+                <p style="display: none;">Programlama ve Web teknolojileri hakkında bilgiler içermektedir.</p>
                 {{ $articles->links() }}
             </div>
             <!-- Start Blog Post Siddebar -->

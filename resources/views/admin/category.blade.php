@@ -7,25 +7,21 @@
 @endsection
 @section('content')
 
-<div class="w3-row" style="margin:10px;">
+<div>
   <a style="color: black;text-decoration:none;" href="{{url('admin/categorycreate')}}">
     <p>
-      <button style="margin:10px;" class="w3-button w3-padding-large w3-white w3-border w3-right">
-      <b>
+      <button style="margin:10px;" class="btn btn-secondary">
         YENİ KATEGORİ EKLEME »
-      </b>
       </button>
     </p>
   </a>
-  <table class="w3-table-all">
+  <table>
     <thead>
-      <tr class="w3">
+      <tr>
         <th>Kategori</th>
         <th>##</th>
       </tr>
     </thead>
-
-    <!-- Blog entry -->
     @foreach ($categories as $key=>$category)
     <tr>
       <td>{{$category->category}}</td>
@@ -39,10 +35,8 @@
     </tr>
     @endforeach
   </table>
-  <!-- END BLOG ENTRIES -->
-
 </div>
-<div class="w3-center">
+<div class="">
   {{ $categories->links() }}<br>
 </div>
 <!-- END w3-content -->

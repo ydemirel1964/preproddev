@@ -10,7 +10,7 @@ class categories extends Model
     use HasFactory;
 
     protected $table = 'categories';
-    protected $fillable = ['category', 'slug', 'parent_id', 'metatags', 'description', 'user_id'];
+    protected $fillable = ['category', 'slug', 'parent_id', 'metatags', 'description', 'user_id','admin_confirmation'];
     protected $primaryKey = 'id';
 
     public function article_categories()

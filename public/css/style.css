@@ -757,3 +757,9 @@ header {
   border-radius: 3px;
   padding: 10px;
 }
+
+.comment-card {
+  border: none;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+  border-radius: 4px;
+}

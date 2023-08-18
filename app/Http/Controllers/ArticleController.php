@@ -20,12 +20,14 @@ class ArticleController extends Controller
         $categoryService = new categoryService();
         $articleService = new articleService();
         $articles = $articleService->getArticle($slug);
+        $articleComments = $articleService->getArticleComments($slug);
+        info($articleComments);
         $sidebarArticles = $articleService->getSidebarArticles();
         $sidebarCategories = $categoryService->getSidebarCategories();
-        return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles]);
+        return view('article', ['sidebarCategories' => $sidebarCategories, 'sidebarArticles' => $sidebarArticles, 'articles' => $articles, 'comments' => $articleComments]);
     }
 
-    public function createForm(request $request)
+    public function createForm()
     {
         if (Auth::check()) {
             try {
@@ -125,14 +127,10 @@ class ArticleController extends Controller
                     $articleid = $request->id;
                     $articlecontenttitle = $request->articlecontenttitle;
                     $articlecontentdescription = $request->articlecontentdescription;
-                    $slug = $request->articleslug;
-                    $metatags = $request->metatags;
                     $content = $request->articlecontent;
                     $contentcategory = $request->categories;
                     $articlesupdate = articles::where([['user_id', "$id"], ['id', "$articleid"]])->update([
                         'content_title' => "$articlecontenttitle",
-                        'slug' => "$slug",
-                        'metatags' => "$metatags",
                         'content' => "$content",
                         'content_description' => "$articlecontentdescription",
                         'admin_confirmation' => 1
@@ -148,10 +146,10 @@ class ArticleController extends Controller
                     }
                     return redirect('/profile');
                 } else {
-                    $id = Auth::user()->id;
+                    $id = trim(Auth::user()->id);
                     $articleUserId = articles::select('user_id')->where('id', $articleid)->first();
-                    if ($id !== $articleUserId['user_id']) {
-                      return redirect('/profile');
+                    if ($id != $articleUserId['user_id']) {
+                        return redirect('/profile');
                     }
                     $selectedCategoriesId = array();
 
@@ -163,6 +161,7 @@ class ArticleController extends Controller
                         $selectedCategoriesId[] = $value['category_id'];
                     }
                     $categories = categories::get();
+                    info($articles);
                     return view('articleUpdate', ['article' => $articles, 'categories' => $categories, 'selectedCategoriesId' => $selectedCategoriesId]);
                 }
             } catch (Throwable $e) {

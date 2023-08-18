@@ -35,7 +35,7 @@ class CategoryController extends Controller
                 ->where('categories.id', $category_id)
                 ->where('articles.admin_confirmation',1)
                 ->orWhere('categories.parent_id', $category_id)
-                ->orderBy('articles.rank', 'ASC')
+                ->orderBy('articles.rank', 'DESC')
                 ->get();
 
             $article_categories = json_decode(json_encode($article_categories), true);

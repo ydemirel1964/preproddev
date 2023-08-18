@@ -10,6 +10,7 @@
 
   <!--================ Start Blog Post Area =================-->
   <section class="blog-post-area section-margin mt-4">
+    <p style="display: none;">{{ $category_name }} - Preprod Dev</p>
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
